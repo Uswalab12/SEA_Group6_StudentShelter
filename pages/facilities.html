@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Facilities &amp; Amenities — Student Shelter</title>
+
+    <!-- Apply saved theme early to prevent a flash of light mode -->
+    <script>
+      (function () {
+        if (localStorage.getItem("studentShelterTheme") === "dark") {
+          document.documentElement.setAttribute("data-bs-theme", "dark");
+        }
+      })();
+    </script>
+
+    <!-- Bootstrap 5.3.3 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap Icons 1.11.3 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- Shared & Page CSS (../ is used because this file is inside pages/) -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/facilities.css" />
+  </head>
+  <body>
+    <!-- Shared Header Placeholder (Loaded dynamically by ../js/main.js) -->
+    <div id="header-placeholder"></div>
+
+    <main>
+      <!-- 1. Hero Section & Breadcrumb -->
+      <section class="page-banner-green">
+        <div class="container">
+          <nav aria-label="Breadcrumb" class="mb-3">
+            <ol class="breadcrumb mb-0 small">
+              <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Facilities &amp; Amenities</li>
+            </ol>
+          </nav>
+
+          <div class="text-center mx-auto" style="max-width: 760px;">
+            <span class="section-highlight-pill banner-pill mb-2">
+              <i class="bi bi-stars me-1" aria-hidden="true"></i>Student Facility Guide
+            </span>
+            <h1 class="display-5 fw-bold mb-2">Hostel Facilities &amp; Amenities</h1>
+            <p class="lead text-secondary mb-0">
+              Understand common hostel amenities, learn what questions to ask before booking, and compare sample facilities listed across our student residences.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Guide vs Sample Dataset Transparency Notice -->
+      <section class="pt-4">
+        <div class="container">
+          <div class="demo-notice-box d-flex align-items-start gap-2" role="note">
+            <i class="bi bi-info-circle-fill mt-1 flex-shrink-0" aria-hidden="true"></i>
+            <p class="small mb-0">
+              <strong>Guide &amp; Sample Data Notice:</strong> The facility cards below are a <strong>general student guide</strong> to help you evaluate hostels. The comparison section further down reflects only the <strong>sample facility tags</strong> stored in our project dataset (Pages 7 &amp; 8) and does not represent verified real-world audits.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Search, Category Filters & General Facilities Grid -->
+      <section class="py-4 py-md-5" aria-labelledby="guideHeading">
+        <div class="container">
+          <div class="mb-4">
+            <span class="section-highlight-pill mb-2">General Guide</span>
+            <h2 id="guideHeading" class="h3 fw-bold mb-1">Explore Hostel Facilities</h2>
+            <p class="text-secondary mb-0">
+              Search by keyword or pick a category to see what each amenity offers and what to check before moving in.
+            </p>
+          </div>
+
+          <!-- Search & Filter Panel -->
+          <div class="filter-panel mb-4">
+            <div class="row g-3 align-items-end">
+              <div class="col-md-6">
+                <label for="facilitySearch" class="form-label fw-semibold small mb-1">
+                  Search Facilities
+                </label>
+                <div class="input-group">
+                  <span class="input-group-text">
+                    <i class="bi bi-search" aria-hidden="true"></i>
+                  </span>
+                  <input
+                    type="search"
+                    id="facilitySearch"
+                    class="form-control"
+                    placeholder="Search (e.g. WiFi, CCTV, mess, laundry, UPS)..."
+                    aria-label="Search facilities by keyword"
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <label for="categoryFilter" class="form-label fw-semibold small mb-1">
+                  Filter by Category
+                </label>
+                <select id="categoryFilter" class="form-select">
+                  <option value="all">All Categories</option>
+                  <option value="Security &amp; Safety">Security &amp; Safety</option>
+                  <option value="Internet &amp; Study">Internet &amp; Study</option>
+                  <option value="Room Essentials">Room Essentials</option>
+                  <option value="Food &amp; Mess">Food &amp; Mess</option>
+                  <option value="Laundry &amp; Cleaning">Laundry &amp; Cleaning</option>
+                  <option value="Utilities &amp; Power Backup">Utilities &amp; Power Backup</option>
+                  <option value="Common Areas &amp; Recreation">Common Areas &amp; Recreation</option>
+                </select>
+              </div>
+
+              <div class="col-md-2 d-grid">
+                <button
+                  type="button"
+                  id="resetFacilityFiltersBtn"
+                  class="btn btn-outline-ss rounded-pill py-2"
+                >
+                  <i class="bi bi-arrow-repeat me-1" aria-hidden="true"></i>Reset
+                </button>
+              </div>
+            </div>
+
+            <!-- Quick Category Pills -->
+            <div class="mt-3 pt-3 border-top filter-divider">
+              <p class="small fw-semibold text-secondary mb-2">Quick Categories:</p>
+              <div id="categoryPills" class="d-flex flex-wrap gap-2" role="group" aria-label="Facility category shortcuts">
+                <button type="button" class="category-pill-btn active" data-category="all">All</button>
+                <button type="button" class="category-pill-btn" data-category="Security &amp; Safety">Security &amp; Safety</button>
+                <button type="button" class="category-pill-btn" data-category="Internet &amp; Study">Internet &amp; Study</button>
+                <button type="button" class="category-pill-btn" data-category="Room Essentials">Room Essentials</button>
+                <button type="button" class="category-pill-btn" data-category="Food &amp; Mess">Food &amp; Mess</button>
+                <button type="button" class="category-pill-btn" data-category="Laundry &amp; Cleaning">Laundry &amp; Cleaning</button>
+                <button type="button" class="category-pill-btn" data-category="Utilities &amp; Power Backup">Utilities &amp; Power Backup</button>
+                <button type="button" class="category-pill-btn" data-category="Common Areas &amp; Recreation">Common Areas &amp; Recreation</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Matching Facilities Count -->
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <p id="facilityResultsCount" class="fw-semibold text-secondary mb-0">
+              Loading facilities...
+            </p>
+          </div>
+
+          <!-- Facilities Cards Grid -->
+          <div id="facilityGrid" class="row g-4">
+            <!-- Populated dynamically by ../js/facilities.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Sample Hostel Amenities Comparison (Dataset from Pages 7 & 8) -->
+      <section class="comparison-section py-5" aria-labelledby="comparisonHeading">
+        <div class="container">
+          <div class="mb-4">
+            <span class="section-highlight-pill banner-pill mb-2">Sample Project Dataset</span>
+            <h2 id="comparisonHeading" class="h3 fw-bold mb-2">
+              Sample Hostels &amp; Listed Amenities
+            </h2>
+            <p class="text-secondary mb-0" style="max-width: 780px;">
+              Filter our 8 sample hostel listings by the amenity tags currently stored in Pages 7 &amp; 8.
+              <strong>Important:</strong> Missing tags only mean that an amenity was not listed in the sample dataset—not that the hostel lacks it.
+            </p>
+          </div>
+
+          <!-- Amenity Filter Bar -->
+          <div class="filter-panel mb-4">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+              <div>
+                <p class="small fw-semibold mb-2">Filter Sample Hostels by Listed Amenity:</p>
+                <div id="hostelAmenityFilters" class="d-flex flex-wrap gap-2" role="group" aria-label="Filter hostels by amenity">
+                  <button type="button" class="category-pill-btn active" data-amenity="all">All Hostels (8)</button>
+                  <button type="button" class="category-pill-btn" data-amenity="wifi">WiFi</button>
+                  <button type="button" class="category-pill-btn" data-amenity="power">Backup Power</button>
+                  <button type="button" class="category-pill-btn" data-amenity="mess">Mess / Dining</button>
+                  <button type="button" class="category-pill-btn" data-amenity="laundry">Laundry</button>
+                  <button type="button" class="category-pill-btn" data-amenity="security">Security / CCTV</button>
+                </div>
+              </div>
+              <p id="hostelMatchCount" class="small fw-semibold text-secondary mb-0">
+                Showing 8 of 8 sample hostels
+              </p>
+            </div>
+          </div>
+
+          <!-- Sample Hostels Comparison Grid -->
+          <div id="hostelComparisonGrid" class="row g-4">
+            <!-- Populated dynamically by ../js/facilities.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Navigation Back to Shared Rooms, Hostel Details & Find Hostel -->
+      <section class="py-5" aria-labelledby="nextStepsHeading">
+        <div class="container">
+          <div class="cta-banner-card p-4 p-md-5 text-center">
+            <span class="section-highlight-pill mb-2">Continue Exploring</span>
+            <h2 id="nextStepsHeading" class="h3 fw-bold mb-2">Ready to Compare Rooms?</h2>
+            <p class="text-secondary mx-auto mb-4" style="max-width: 620px;">
+              Filter shared rooms by monthly budget, inspect individual hostel details, or search all hostels by city.
+            </p>
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+              <a href="shared-rooms.html" class="btn btn-dark-green rounded-pill px-4 py-2">
+                <i class="bi bi-people-fill me-1" aria-hidden="true"></i>Browse Shared Rooms
+              </a>
+              <a href="hostel-details.html" class="btn btn-outline-ss rounded-pill px-4 py-2">
+                <i class="bi bi-building me-1" aria-hidden="true"></i>View Hostel Details
+              </a>
+              <a href="find-hostel.html" class="btn btn-outline-ss rounded-pill px-4 py-2">
+                <i class="bi bi-search me-1" aria-hidden="true"></i>Find a Hostel
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Shared Footer Placeholder (Loaded dynamically by ../js/main.js) -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Bootstrap 5.3.3 JS Bundle -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/facilities.js"></script>
+  </body>
+</html>
