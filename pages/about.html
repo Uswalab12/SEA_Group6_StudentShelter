@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Student Shelter — Safe Student Hostels</title>
+    <script>
+      (function () {
+        if (localStorage.getItem("studentShelterTheme") === "dark") {
+          document.documentElement.setAttribute("data-bs-theme", "dark");
+        }
+      })();
+    </script>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- Shared CSS (Note: ../ is used since this file is in pages/ folder) -->
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    
+    <!-- Header Placeholder (Yahan JS se header load hoga) -->
+    <div id="header-placeholder"></div>
+
+    <main>
+      <!-- 1. Page Header Banner -->
+      <section class="page-banner-green text-center">
+        <div class="container">
+          <span class="section-highlight-pill bg-white mb-2">Who We Are</span>
+          <h1 class="display-5 fw-bold mb-2">About Student Shelter</h1>
+          <p class="lead text-secondary mx-auto mb-0" style="max-width: 680px;">
+            Dedicated to helping university students find safe, verified, and affordable hostels away from home.
+          </p>
+        </div>
+      </section>
+
+      <!-- 2. Our Story Section -->
+      <section class="py-5">
+        <div class="container py-2">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-6">
+              <span class="section-highlight-pill mb-3">Our Story</span>
+              <h2 class="h2 fw-bold mb-3">Why We Created Student Shelter</h2>
+              <p class="text-secondary mb-3">
+                Relocating to a new city for higher education is an exciting milestone, yet thousands of students and parents spend weeks navigating unreliable listings, hidden fees, and unverified hostel conditions.
+              </p>
+              <p class="text-secondary mb-0">
+                <strong>Student Shelter</strong> was built by students who experienced that struggle firsthand. Our mission is simple: connect university learners with safe, transparent, and comfortable hostels within easy reach of campus—without middlemen or guesswork.
+              </p>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <div class="ss-card p-4 h-100">
+                    <i class="bi bi-shield-check fs-2 mb-2 d-block" style="color: var(--ss-dark-green);" aria-hidden="true"></i>
+                    <h3 class="h5 fw-bold mb-1">Safety First</h3>
+                    <p class="small text-secondary mb-0">
+                      Every listed hostel is checked for CCTV security, secure entry, and reliable warden oversight.
+                    </p>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="ss-card p-4 h-100">
+                    <i class="bi bi-cash-coin fs-2 mb-2 d-block" style="color: var(--ss-dark-green);" aria-hidden="true"></i>
+                    <h3 class="h5 fw-bold mb-1">Clear Pricing</h3>
+                    <p class="small text-secondary mb-0">
+                      Compare monthly rents openly with zero brokerage fees or surprise charges.
+                    </p>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="ss-card p-4 h-100">
+                    <i class="bi bi-wifi fs-2 mb-2 d-block" style="color: var(--ss-dark-green);" aria-hidden="true"></i>
+                    <h3 class="h5 fw-bold mb-1">Study Comfort</h3>
+                    <p class="small text-secondary mb-0">
+                      Listings highlight high-speed WiFi, quiet study lounges, and backup power availability.
+                    </p>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="ss-card p-4 h-100">
+                    <i class="bi bi-geo-alt-fill fs-2 mb-2 d-block" style="color: var(--ss-dark-green);" aria-hidden="true"></i>
+                    <h3 class="h5 fw-bold mb-1">Near Campus</h3>
+                    <p class="small text-secondary mb-0">
+                      Find rooms close to major universities and transit routes across Pakistan.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. FAQ Section -->
+      <section class="py-5 border-top" id="faq">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-9">
+              <div class="text-center mb-4">
+                <span class="section-highlight-pill mb-2">Help Center</span>
+                <h2 class="h2 fw-bold mb-2">Frequently Asked Questions</h2>
+                <p class="text-secondary mb-0">
+                  Answers to common questions from students and parents.
+                </p>
+              </div>
+
+              <div class="accordion ss-accordion" id="faqAccordion">
+                <div class="accordion-item">
+                  <h3 class="accordion-header" id="faqHeadingOne">
+                    <button
+                      class="accordion-button"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#faqCollapseOne"
+                      aria-expanded="true"
+                      aria-controls="faqCollapseOne"
+                    >
+                      1. How do I book a hostel?
+                    </button>
+                  </h3>
+                  <div
+                    id="faqCollapseOne"
+                    class="accordion-collapse collapse show"
+                    aria-labelledby="faqHeadingOne"
+                    data-bs-parent="#faqAccordion"
+                  >
+                    <div class="accordion-body">
+                      Browse available residences on the <strong>Hostels</strong> page, filter by your city and preferred room type, and click to schedule an in-person tour or reserve your room directly with the hostel warden using your student ID.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h3 class="accordion-header" id="faqHeadingTwo">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#faqCollapseTwo"
+                      aria-expanded="false"
+                      aria-controls="faqCollapseTwo"
+                    >
+                      2. Are the hostels verified?
+                    </button>
+                  </h3>
+                  <div
+                    id="faqCollapseTwo"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="faqHeadingTwo"
+                    data-bs-parent="#faqAccordion"
+                  >
+                    <div class="accordion-body">
+                      Yes. Every hostel listed on Student Shelter goes through a verification process covering property ownership, CCTV/security arrangements, clean water, WiFi connectivity, and transparent fee disclosures.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h3 class="accordion-header" id="faqHeadingThree">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#faqCollapseThree"
+                      aria-expanded="false"
+                      aria-controls="faqCollapseThree"
+                    >
+                      3. Are mess meals and utilities included in the monthly rent?
+                    </button>
+                  </h3>
+                  <div
+                    id="faqCollapseThree"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="faqHeadingThree"
+                    data-bs-parent="#faqAccordion"
+                  >
+                    <div class="accordion-body">
+                      Most partner hostels include 2-time or 3-time mess meals, WiFi, and basic water charges in their listed monthly price. Optional air-conditioning electricity charges are communicated upfront before move-in.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h3 class="accordion-header" id="faqHeadingFour">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#faqCollapseFour"
+                      aria-expanded="false"
+                      aria-controls="faqCollapseFour"
+                    >
+                      4. Is Student Shelter free for students to use?
+                    </button>
+                  </h3>
+                  <div
+                    id="faqCollapseFour"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="faqHeadingFour"
+                    data-bs-parent="#faqAccordion"
+                  >
+                    <div class="accordion-body">
+                      Yes! Searching, filtering, and comparing hostels on Student Shelter is completely free for students—we charge zero brokerage or platform commission fees.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-center mt-4">
+                <a href="find-hostel.html" class="btn btn-dark-green rounded-pill px-4 py-2">
+                  Browse Verified Hostels <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Placeholder (Yahan JS se footer load hoga) -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Main JS (Note: ../ is used since this file is in pages/ folder) -->
+    <script src="../js/main.js"></script>
+  </body>
+</html>
