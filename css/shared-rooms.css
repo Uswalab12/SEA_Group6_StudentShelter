@@ -1,0 +1,305 @@
+/* ==========================================================================
+   Student Shelter — Shared Rooms Stylesheet (css/shared-rooms.css)
+   Uses theme variables from css/style.css for light and dark mode support.
+   ========================================================================== */
+
+/* Hero pill readable in both light and dark modes */
+.banner-pill {
+  background-color: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+}
+
+/* Sample listings notice banner */
+.demo-notice-box {
+  background-color: var(--ss-light-green);
+  border: 1px solid var(--ss-border);
+  color: var(--ss-dark-green);
+  border-radius: 0.9rem;
+  padding: 0.9rem 1.15rem;
+}
+
+/* Filter & Sort Panel */
+.filter-panel {
+  background-color: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+  border-radius: 1.1rem;
+  box-shadow: var(--ss-shadow);
+  padding: 1.5rem;
+}
+
+.filter-panel .form-control,
+.filter-panel .form-select,
+.calculator-card .form-select {
+  border-color: var(--ss-border);
+  background-color: var(--ss-surface);
+  color: var(--ss-text);
+  border-radius: 0.7rem;
+  padding: 0.65rem 0.9rem;
+}
+
+.filter-panel .form-control:focus,
+.filter-panel .form-select:focus,
+.calculator-card .form-select:focus {
+  border-color: var(--ss-dark-green);
+  box-shadow: 0 0 0 0.2rem rgba(6, 78, 43, 0.18);
+}
+
+.filter-actions-bar {
+  border-color: var(--ss-border) !important;
+}
+
+/* Outline Secondary Button matching green theme */
+.btn-outline-ss {
+  border: 1px solid var(--ss-dark-green);
+  color: var(--ss-dark-green);
+  background-color: transparent;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-outline-ss:hover,
+.btn-outline-ss:focus-visible {
+  background-color: var(--ss-light-green);
+  color: var(--ss-dark-green);
+  border-color: var(--ss-dark-green);
+}
+
+/* Visible keyboard focus ring across interactive controls */
+.filter-panel button:focus-visible,
+.ss-card a:focus-visible,
+.ss-card button:focus-visible,
+#showMoreBtn:focus-visible,
+#clearRecentBtn:focus-visible,
+.recent-room-card a:focus-visible {
+  outline: 3px solid var(--ss-dark-green);
+  outline-offset: 2px;
+}
+
+/* Wishlist summary pill */
+.wishlist-summary-badge {
+  background-color: var(--ss-light-green);
+  color: var(--ss-dark-green);
+  border: 1px solid var(--ss-border);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* CSS-built Room Image Placeholder (No external image files required) */
+.room-visual-box {
+  position: relative;
+  height: 175px;
+  padding: 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.room-visual-box::before {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: rgba(234, 245, 232, 0.12);
+  top: -40px;
+  right: -30px;
+}
+
+.room-visual-box::after {
+  content: "";
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: rgba(234, 245, 232, 0.08);
+  bottom: -45px;
+  left: -25px;
+}
+
+.room-visual-emerald {
+  background: linear-gradient(135deg, #064e2b 0%, #0b7a43 100%);
+}
+
+.room-visual-forest {
+  background: linear-gradient(135deg, #054426 0%, #14804d 100%);
+}
+
+.room-visual-sage {
+  background: linear-gradient(135deg, #0a5c36 0%, #166534 100%);
+}
+
+.room-visual-teal {
+  background: linear-gradient(135deg, #064e2b 0%, #0f766e 100%);
+}
+
+.room-visual-moss {
+  background: linear-gradient(135deg, #08532f 0%, #15803d 100%);
+}
+
+.room-visual-top,
+.room-visual-bottom {
+  position: relative;
+  z-index: 1;
+}
+
+.room-visual-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.65rem;
+}
+
+.room-visual-pill {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+
+/* Availability Badge */
+.availability-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  background-color: var(--ss-light-green);
+  color: var(--ss-dark-green);
+  border: 1px solid var(--ss-border);
+}
+
+.availability-badge.is-limited {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: #92400e;
+  border-color: rgba(245, 158, 11, 0.35);
+}
+
+body.dark-mode .availability-badge.is-limited {
+  color: #fcd34d;
+}
+
+/* Facilities Chips */
+.facility-chip {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.22rem 0.6rem;
+  border-radius: 0.5rem;
+  background-color: var(--ss-light-green);
+  color: var(--ss-text);
+  border: 1px solid var(--ss-border);
+}
+
+/* Pricing Box inside Room Card */
+.room-price-box {
+  background-color: var(--ss-light-green);
+  border: 1px solid var(--ss-border);
+  border-radius: 0.85rem;
+  padding: 0.75rem 0.9rem;
+}
+
+/* Wishlist Button */
+.btn-wishlist {
+  border: 1px solid var(--ss-border);
+  background-color: var(--ss-surface);
+  color: var(--ss-dark-green);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-wishlist:hover {
+  background-color: var(--ss-light-green);
+  color: var(--ss-dark-green);
+  border-color: var(--ss-dark-green);
+}
+
+.btn-wishlist.is-saved {
+  background-color: var(--ss-light-green);
+  border-color: var(--ss-dark-green);
+  color: var(--ss-dark-green);
+}
+
+.btn-wishlist.is-saved i {
+  color: #dc2626;
+}
+
+/* Empty State Card (matches css/find-hostel.css look) */
+.empty-state-card {
+  background-color: var(--ss-surface);
+  border: 1px dashed var(--ss-border);
+  border-radius: 1.15rem;
+  box-shadow: var(--ss-shadow);
+  padding: 3rem 1.5rem;
+  text-align: center;
+  max-width: 580px;
+  margin: 1rem auto;
+}
+
+.empty-state-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--ss-light-green);
+  color: var(--ss-dark-green);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Monthly Cost Calculator */
+.calculator-section {
+  background-color: var(--ss-light-green);
+  border-top: 1px solid var(--ss-border);
+  border-bottom: 1px solid var(--ss-border);
+}
+
+.calculator-card {
+  background-color: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+  border-radius: 1.25rem;
+  box-shadow: var(--ss-shadow);
+}
+
+.calculator-result-box {
+  background-color: var(--ss-light-green);
+  border: 1px solid var(--ss-border);
+  border-radius: 1rem;
+}
+
+.calc-result-label {
+  color: var(--ss-dark-green);
+  letter-spacing: 0.05em;
+}
+
+#calcTotalOutput {
+  color: var(--ss-dark-green);
+}
+
+/* Recently Viewed Cards */
+.recent-room-card {
+  background-color: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+  border-radius: 1rem;
+  box-shadow: var(--ss-shadow);
+  padding: 1.15rem;
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.recent-room-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ss-shadow-hover);
+}
