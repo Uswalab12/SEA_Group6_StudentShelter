@@ -1,0 +1,345 @@
+/* ==========================================================================
+   Student Shelter — Shared Stylesheet (css/style.css)
+   Strict Theme:
+   - Main Background: #FFFFFF
+   - Headings, Navbar Text & Important Buttons: #064E2B
+   - Section Backgrounds & Highlights: #EAF5E8
+   ========================================================================== */
+
+:root {
+  --ss-bg: #ffffff;
+  --ss-surface: #ffffff;
+  --ss-dark-green: #064e2b;
+  --ss-dark-green-hover: #04391f;
+  --ss-light-green: #eaf5e8;
+  --ss-text: #374151;
+  --ss-text-muted: #6b7280;
+  --ss-border: #d5e8d2;
+  --ss-shadow: 0 8px 24px rgba(6, 78, 43, 0.08);
+  --ss-shadow-hover: 0 14px 30px rgba(6, 78, 43, 0.14);
+}
+
+/* Dark Mode Overrides */
+body.dark-mode,
+[data-bs-theme="dark"] body {
+  --ss-bg: #0f1714;
+  --ss-surface: #16221d;
+  --ss-dark-green: #86efac;
+  --ss-dark-green-hover: #4ade80;
+  --ss-light-green: #1b2d25;
+  --ss-text: #e5e7eb;
+  --ss-text-muted: #9ca3af;
+  --ss-border: #274035;
+  --ss-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --ss-shadow-hover: 0 14px 30px rgba(0, 0, 0, 0.5);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--ss-bg);
+  color: var(--ss-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--ss-dark-green);
+}
+
+/* Shared Navbar */
+.ss-navbar {
+  background-color: var(--ss-surface);
+  border-bottom: 1px solid var(--ss-light-green);
+  box-shadow: 0 2px 12px rgba(6, 78, 43, 0.05);
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.ss-navbar-logo {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.ss-brand-text {
+  color: var(--ss-dark-green);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+
+.ss-navbar .nav-link {
+  color: #064e2b;
+  font-weight: 500;
+  padding: 0.5rem 0.85rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.ss-navbar .nav-link:hover,
+.ss-navbar .nav-link:focus {
+  background-color: #eaf5e8;
+  color: #064e2b;
+}
+
+.ss-navbar .nav-link.active {
+  background-color: #064e2b;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.ss-navbar .dropdown-menu {
+  border: 1px solid #d5e8d2;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 25px rgba(6, 78, 43, 0.12);
+  padding: 0.5rem;
+}
+
+.ss-navbar .dropdown-item {
+  color: #064e2b;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.ss-navbar .dropdown-item:hover,
+.ss-navbar .dropdown-item:focus {
+  background-color: #eaf5e8;
+  color: #064e2b;
+}
+
+.ss-navbar .dropdown-item.active {
+  background-color: #064e2b;
+  color: #ffffff;
+}
+
+.btn-search-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--ss-light-green);
+  color: var(--ss-dark-green);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-search-icon:hover {
+  opacity: 0.9;
+  color: var(--ss-dark-green);
+  transform: translateY(-1px);
+}
+
+.btn-theme-toggle {
+  border: 1px solid var(--ss-border);
+  background-color: var(--ss-light-green);
+  color: var(--ss-dark-green);
+  border-radius: 999px;
+  padding: 0.42rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.btn-theme-toggle:hover {
+  border-color: var(--ss-dark-green);
+}
+
+.btn-dark-green {
+  background-color: #064e2b;
+  border-color: #064e2b;
+  color: #ffffff;
+  font-weight: 600;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-dark-green:hover,
+.btn-dark-green:focus {
+  background-color: #04391f;
+  border-color: #04391f;
+  color: #ffffff;
+}
+
+body.dark-mode .btn-dark-green {
+  background-color: #15803d;
+  border-color: #15803d;
+  color: #ffffff;
+}
+
+body.dark-mode .btn-dark-green:hover {
+  background-color: #166534;
+  border-color: #166534;
+}
+
+/* Light Green Section Banner (About & Find Hostel) */
+.page-banner-green {
+  background-color: var(--ss-light-green);
+  border-bottom: 1px solid var(--ss-border);
+  padding: 3.25rem 0;
+}
+
+.section-highlight-pill {
+  display: inline-block;
+  background-color: var(--ss-light-green);
+  color: var(--ss-dark-green);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+}
+
+/* Shared Cards & Hostel Cards */
+.ss-card {
+  background-color: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+  border-radius: 1.1rem;
+  box-shadow: var(--ss-shadow);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ss-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ss-shadow-hover);
+}
+
+.hostel-card-img {
+  width: 100%;
+  height: 185px;
+  object-fit: cover;
+  display: block;
+}
+
+.hostel-price {
+  color: var(--ss-dark-green);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.hostel-type-badge {
+  background-color: var(--ss-light-green);
+  color: var(--ss-dark-green);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+/* About Page FAQ Accordion */
+.ss-accordion .accordion-item {
+  background-color: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+  border-radius: 1rem !important;
+  box-shadow: var(--ss-shadow);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.ss-accordion .accordion-button {
+  background-color: var(--ss-surface);
+  color: var(--ss-dark-green);
+  font-weight: 600;
+  padding: 1.15rem 1.3rem;
+  box-shadow: none;
+}
+
+.ss-accordion .accordion-button:not(.collapsed) {
+  background-color: var(--ss-light-green);
+  color: var(--ss-dark-green);
+}
+
+.ss-accordion .accordion-body {
+  color: var(--ss-text);
+  background-color: var(--ss-surface);
+}
+
+/* Shared Footer */
+.ss-footer {
+  background-color: #064e2b;
+  color: #eaf5e8;
+  padding: 3.5rem 0 2rem;
+  margin-top: auto;
+}
+
+body.dark-mode .ss-footer {
+  background-color: #042f1a;
+}
+
+.footer-logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background-color: #ffffff;
+  padding: 0.4rem 0.85rem;
+  border-radius: 0.65rem;
+}
+
+.footer-logo-img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+.ss-footer h5,
+.ss-footer h6 {
+  color: #ffffff;
+}
+
+.ss-footer a {
+  color: #eaf5e8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.ss-footer a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.social-icon-link {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: rgba(234, 245, 232, 0.14);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  text-decoration: none !important;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.social-icon-link:hover {
+  background-color: #eaf5e8;
+  color: #064e2b;
+  transform: translateY(-2px);
+}
+
+.footer-divider {
+  border-color: rgba(234, 245, 232, 0.22);
+}
