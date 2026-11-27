@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shared Rooms — Student Shelter</title>
+
+    <!-- Apply saved theme early to prevent a flash of light mode -->
+    <script>
+      (function () {
+        if (localStorage.getItem("studentShelterTheme") === "dark") {
+          document.documentElement.setAttribute("data-bs-theme", "dark");
+        }
+      })();
+    </script>
+
+    <!-- Bootstrap 5.3.3 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap Icons 1.11.3 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- Shared & Page CSS (../ is used because this file is inside pages/) -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/shared-rooms.css" />
+  </head>
+  <body>
+    <!-- Shared Header Placeholder (Loaded dynamically by ../js/main.js) -->
+    <div id="header-placeholder"></div>
+
+    <main>
+      <!-- 1. Hero Section -->
+      <section class="page-banner-green text-center">
+        <div class="container">
+          <span class="section-highlight-pill banner-pill mb-2">
+            <i class="bi bi-people-fill me-1" aria-hidden="true"></i>Shared Accommodation
+          </span>
+          <h1 class="display-5 fw-bold mb-2">Find Your Perfect Shared Room</h1>
+          <p class="lead text-secondary mx-auto mb-0" style="max-width: 680px;">
+            Explore affordable shared accommodation and find a room that fits your budget.
+          </p>
+        </div>
+      </section>
+
+      <!-- 2. Sample Data Notice & Storage Warning Area -->
+      <section class="pt-4">
+        <div class="container">
+          <div class="demo-notice-box d-flex align-items-start gap-2" role="note">
+            <i class="bi bi-info-circle-fill mt-1 flex-shrink-0" aria-hidden="true"></i>
+            <p class="small mb-0">
+              <strong>Sample Listings Notice:</strong> The shared rooms, rents, and availability statuses shown on this page are demonstration sample listings for the Student Shelter project and do not represent verified real-world vacancies.
+            </p>
+          </div>
+
+          <!-- Shown only if localStorage is blocked or corrupted -->
+          <div
+            id="storageNotice"
+            class="alert alert-warning d-none mt-3 mb-0"
+            role="status"
+            aria-live="polite"
+          ></div>
+        </div>
+      </section>
+
+      <!-- 3. Filter & Sort Section + Room Listings -->
+      <section class="py-4 py-md-5" aria-labelledby="listingsHeading">
+        <div class="container">
+          <h2 id="listingsHeading" class="visually-hidden">Filter and Browse Shared Rooms</h2>
+
+          <!-- Filter Card -->
+          <form id="filterForm" class="filter-panel mb-4" novalidate>
+            <div class="row g-3 align-items-end">
+              <div class="col-sm-6 col-lg-3">
+                <label for="minBudget" class="form-label fw-semibold small mb-1">
+                  Minimum Monthly Budget (PKR)
+                </label>
+                <input
+                  type="number"
+                  id="minBudget"
+                  class="form-control"
+                  min="0"
+                  step="500"
+                  placeholder="e.g. 8000"
+                  aria-describedby="budgetHelp"
+                />
+              </div>
+
+              <div class="col-sm-6 col-lg-3">
+                <label for="maxBudget" class="form-label fw-semibold small mb-1">
+                  Maximum Monthly Budget (PKR)
+                </label>
+                <input
+                  type="number"
+                  id="maxBudget"
+                  class="form-control"
+                  min="0"
+                  step="500"
+                  placeholder="e.g. 18000"
+                  aria-describedby="budgetHelp"
+                />
+              </div>
+
+              <div class="col-sm-6 col-lg-3">
+                <label for="occupantsFilter" class="form-label fw-semibold small mb-1">
+                  Students per Room
+                </label>
+                <select id="occupantsFilter" class="form-select">
+                  <option value="any">Any</option>
+                  <option value="2">2 students (Double Sharing)</option>
+                  <option value="3">3 students (Triple Sharing)</option>
+                  <option value="4">4 students (Quad Sharing)</option>
+                </select>
+              </div>
+
+              <div class="col-sm-6 col-lg-3">
+                <label for="sortOrder" class="form-label fw-semibold small mb-1">
+                  Sort by
+                </label>
+                <select id="sortOrder" class="form-select">
+                  <option value="lowest">Lowest rent</option>
+                  <option value="highest">Highest rent</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mt-3 pt-3 border-top filter-actions-bar">
+              <p id="budgetHelp" class="small text-secondary mb-0">
+                Budgets filter rooms by <strong>monthly rent per student</strong> in PKR.
+              </p>
+              <div class="d-flex flex-wrap gap-2">
+                <button type="submit" id="applyFiltersBtn" class="btn btn-dark-green rounded-pill px-4">
+                  <i class="bi bi-funnel-fill me-1" aria-hidden="true"></i>Apply Filters
+                </button>
+                <button type="button" id="resetFiltersBtn" class="btn btn-outline-ss rounded-pill px-4">
+                  <i class="bi bi-arrow-repeat me-1" aria-hidden="true"></i>Reset
+                </button>
+              </div>
+            </div>
+
+            <!-- Validation / Error Feedback Message -->
+            <div
+              id="filterErrorBox"
+              class="alert alert-danger d-none mt-3 mb-0"
+              role="alert"
+              aria-live="assertive"
+            ></div>
+          </form>
+
+          <!-- Results Summary Bar -->
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+            <p id="resultsCount" class="fw-semibold text-secondary mb-0">
+              Loading shared rooms...
+            </p>
+            <span id="wishlistCounter" class="wishlist-summary-badge">
+              <i class="bi bi-heart-fill me-1" aria-hidden="true"></i>
+              Saved to Wishlist: 0
+            </span>
+          </div>
+
+          <!-- Room Cards Grid -->
+          <div id="sharedRoomsGrid" class="row g-4">
+            <!-- Populated dynamically by ../js/shared-rooms.js -->
+          </div>
+
+          <!-- Show More Controls -->
+          <div class="text-center mt-4 pt-2" id="showMoreWrapper">
+            <button
+              type="button"
+              id="showMoreBtn"
+              class="btn btn-dark-green rounded-pill px-4 py-2"
+            >
+              <i class="bi bi-plus-circle me-1" aria-hidden="true"></i>Show More Room Options
+            </button>
+            <p id="showMoreStatus" class="small text-secondary mt-2 mb-0"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Monthly Cost Calculator Section -->
+      <section class="calculator-section py-5" aria-labelledby="calculatorHeading">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <div class="calculator-card p-4 p-md-5">
+                <div class="row g-4 align-items-center">
+                  <div class="col-lg-7">
+                    <span class="section-highlight-pill mb-2">Budget Planner</span>
+                    <h2 id="calculatorHeading" class="h3 fw-bold mb-2">
+                      <i class="bi bi-calculator-fill me-2" aria-hidden="true"></i>Monthly Cost Calculator
+                    </h2>
+                    <p class="text-secondary mb-4">
+                      Choose a shared room and how many months you plan to stay to estimate your total per-student rent.
+                    </p>
+
+                    <div class="row g-3">
+                      <div class="col-md-7">
+                        <label for="calcRoomSelect" class="form-label fw-semibold small mb-1">
+                          Select Shared Room
+                        </label>
+                        <select id="calcRoomSelect" class="form-select">
+                          <!-- Populated dynamically by ../js/shared-rooms.js -->
+                        </select>
+                      </div>
+
+                      <div class="col-md-5">
+                        <label for="calcDurationSelect" class="form-label fw-semibold small mb-1">
+                          Duration of Stay
+                        </label>
+                        <select id="calcDurationSelect" class="form-select">
+                          <option value="1">1 Month</option>
+                          <option value="3">3 Months</option>
+                          <option value="6" selected>6 Months</option>
+                          <option value="12">12 Months</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-5">
+                    <div class="calculator-result-box p-4 text-center">
+                      <p class="small text-uppercase fw-bold mb-1 calc-result-label">
+                        Estimated Total Cost
+                      </p>
+                      <p id="calcTotalOutput" class="display-6 fw-bold mb-2">PKR 0</p>
+                      <p id="calcBreakdownOutput" class="small text-secondary mb-0">
+                        Select a room and duration to calculate.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Recently Viewed Rooms Section -->
+      <section class="py-5" aria-labelledby="recentlyViewedHeading">
+        <div class="container">
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+            <div>
+              <span class="section-highlight-pill mb-2">Your Activity</span>
+              <h2 id="recentlyViewedHeading" class="h3 fw-bold mb-0">
+                <i class="bi bi-clock-history me-2" aria-hidden="true"></i>Recently Viewed Rooms
+              </h2>
+            </div>
+            <button
+              type="button"
+              id="clearRecentBtn"
+              class="btn btn-outline-ss btn-sm rounded-pill px-3 d-none"
+            >
+              <i class="bi bi-x-circle me-1" aria-hidden="true"></i>Clear History
+            </button>
+          </div>
+
+          <div id="recentlyViewedContainer" class="row g-3">
+            <!-- Populated dynamically from localStorage -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Shared Footer Placeholder (Loaded dynamically by ../js/main.js) -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Bootstrap 5.3.3 JS Bundle -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/shared-rooms.js"></script>
+  </body>
+</html>
