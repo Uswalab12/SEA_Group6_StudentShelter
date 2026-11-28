@@ -1,0 +1,141 @@
+/* ===== THEME COLORS =====
+   Replace these values with the colors from your first page
+   (copy them from your other CSS file) and the whole page will match. */
+:root {
+  --bg: #f7f8fa;          /* page background */
+  --surface: #ffffff;     /* cards / boxes */
+  --text: #1f2933;        /* main text */
+  --muted: #5f6b7a;       /* lighter text */
+  --primary: #1e5eff;     /* main brand color (header, buttons) */
+  --primary-dark: #1445c4;
+  --border: #dfe3e8;
+  --font: "Segoe UI", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ===== HEADER ===== */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px 32px;
+  background: var(--primary);
+}
+.logo {
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.site-header nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  padding-bottom: 3px;
+}
+.site-header nav a:hover,
+.site-header nav a.active {
+  border-bottom: 2px solid #fff;
+}
+
+/* ===== INTRO ===== */
+.intro {
+  text-align: center;
+  padding: 48px 20px 24px;
+}
+.intro h1 { font-size: 2.2rem; margin-bottom: 8px; }
+.intro p { color: var(--muted); }
+
+/* ===== FAQ LIST ===== */
+.faq-list {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 16px 20px 32px;
+}
+.faq-list h2 {
+  font-size: 1.2rem;
+  margin: 28px 0 12px;
+  color: var(--primary);
+}
+
+details {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+summary {
+  cursor: pointer;
+  padding: 14px 18px;
+  font-weight: 600;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after {
+  content: "+";
+  font-size: 1.4rem;
+  color: var(--primary);
+}
+details[open] summary::after { content: "\2212"; } /* minus sign */
+details[open] { border-color: var(--primary); }
+details p {
+  padding: 0 18px 16px;
+  color: var(--muted);
+}
+summary:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid var(--primary-dark);
+  outline-offset: 2px;
+}
+
+/* ===== HELP BOX ===== */
+.help-box {
+  max-width: 760px;
+  margin: 0 auto 48px;
+  padding: 32px 20px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.help-box h2 { margin-bottom: 6px; }
+.help-box p { color: var(--muted); margin-bottom: 16px; }
+.btn {
+  display: inline-block;
+  padding: 10px 24px;
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+}
+.btn:hover { background: var(--primary-dark); }
+
+/* ===== FOOTER ===== */
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  .site-header { padding: 14px 16px; }
+  .site-header nav a { margin: 0 12px 0 0; }
+  .intro h1 { font-size: 1.7rem; }
+}
