@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQs — Student Shelter</title>
+  <meta name="description" content="Find answers to frequently asked questions about booking hostels, safety, and facilities on Student Shelter.">
+  
+  <script>
+    (function () {
+      if (localStorage.getItem("studentShelterTheme") === "dark") {
+        document.documentElement.setAttribute("data-bs-theme", "dark");
+      }
+    })();
+  </script>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+  
+  <style>
+    /* FAQ Page Specific Styles */
+    .accordion-button:not(.collapsed) {
+      background-color: #EAF5E8; /* Light Green */
+      color: #064E2B; /* Dark Green */
+      box-shadow: none;
+    }
+    .accordion-button:focus {
+      border-color: #064E2B;
+      box-shadow: 0 0 0 0.25rem rgba(6, 78, 43, 0.25);
+    }
+    .accordion-item {
+      border-radius: 10px !important;
+      overflow: hidden;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      border: 1px solid #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Placeholder (JS Load Karega) -->
+  <div id="header-placeholder"></div>
+
+  <main>
+    <!-- 1. Page Header -->
+    <section class="page-banner-green text-center">
+      <div class="container">
+        <h1 class="display-5 fw-bold mb-2">Frequently Asked Questions</h1>
+        <p class="lead text-secondary mx-auto mb-0" style="max-width: 680px;">
+          Got questions? We've got answers. Find everything you need to know about finding and booking hostels through Student Shelter.
+        </p>
+      </div>
+    </section>
+
+    <!-- 2. FAQ Accordion Section -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            
+            <div class="accordion" id="faqAccordion">
+              
+              <!-- FAQ 1 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                    <strong>1. How do I book a hostel through Student Shelter?</strong>
+                  </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body text-secondary">
+                    Simply use our "Find a Hostel" search bar to filter by city and preferences. Once you find a hostel you like, click on "View" to see the details, and then follow the instructions to submit a booking request. Our team or the hostel warden will contact you within 24 hours to confirm availability.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ 2 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                    <strong>2. Are the hostels listed on the website verified?</strong>
+                  </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body text-secondary">
+                    Yes, absolutely! Every hostel listed on Student Shelter goes through a strict verification process. We check the safety standards, security arrangements (CCTV, guards), facilities, and ownership documents before listing them to ensure a safe environment for students.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ 3 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                    <strong>3. Do I have to pay a security deposit or extra commission?</strong>
+                  </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body text-secondary">
+                    Student Shelter does not charge any brokerage or platform commission from students. However, individual hostels may require a refundable security deposit (usually equal to one month's rent). This information is clearly mentioned on the hostel details page.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ 4 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                    <strong>4. Are mess meals and utilities included in the monthly rent?</strong>
+                  </button>
+                </h2>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body text-secondary">
+                    It depends on the hostel. Most hostels offer mess facilities with 2 or 3 meals a day included in the rent, while others might charge separately. Amenities like Wi-Fi, electricity, and water are usually included in the monthly rent, but optional air-conditioning charges may apply.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ 5 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                    <strong>5. Can I visit the hostel before booking?</strong>
+                  </button>
+                </h2>
+                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body text-secondary">
+                    Yes! We highly recommend visiting the hostel before making any payment. Once you submit a booking request, you can coordinate with the hostel manager to schedule a visit and see the rooms, facilities, and environment for yourself.
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ 6 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
+                    <strong>6. How do I contact support if I face an issue?</strong>
+                  </button>
+                </h2>
+                <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body text-secondary">
+                    You can reach out to us via our "Contact Us" page, email us directly at support@studentshelter.pk, or use the floating chat icon on the home page. Our support team is available to help you resolve any issues.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            
+            <!-- Bottom Call to Action -->
+            <div class="text-center mt-5">
+              <h3 class="h5 fw-bold mb-3">Still have questions?</h3>
+              <a href="contact.html" class="btn btn-dark-green rounded-pill px-4 py-2">
+                Contact Us <i class="bi bi-arrow-right ms-1"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Placeholder (JS Load Karega) -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+  <!-- Main JS -->
+  <script src="../js/main.js"></script>
+</body>
+</html>
