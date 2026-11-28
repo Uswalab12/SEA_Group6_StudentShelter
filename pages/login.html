@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Sign Up | Student Shelter</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Main Navigation">
+      <a href="../index.html" class="nav-brand">
+        <img src="../logo.jpg" alt="Student Shelter Logo" class="nav-logo">
+        <span class="nav-brand-text">Student Shelter</span>
+      </a>
+
+      <button
+        type="button"
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+      >
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <div class="nav-collapse" id="nav-menu">
+        <ul class="nav-links">
+          <li class="nav-item">
+            <a href="../index.html" class="nav-link">Home</a>
+          </li>
+
+          <li class="nav-item nav-dropdown">
+            <button
+              type="button"
+              class="nav-link nav-dropdown-toggle"
+              aria-expanded="false"
+              aria-haspopup="true"
+            >
+              <span>Hostels</span>
+              <svg class="nav-caret" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path d="M4.2 6.2a.75.75 0 0 1 1.06 0L8 8.94l2.74-2.74a.75.75 0 1 1 1.06 1.06l-3.27 3.27a.75.75 0 0 1-1.06 0L4.2 7.26a.75.75 0 0 1 0-1.06z"/>
+              </svg>
+            </button>
+            <ul class="nav-dropdown-menu">
+              <li><a href="locations.html" class="nav-dropdown-link">Locations</a></li>
+              <li><a href="book-hostel.html" class="nav-dropdown-link">Book a Hostel</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="../index.html#about" class="nav-link">About Us</a>
+          </li>
+
+          <li class="nav-item nav-dropdown">
+            <button
+              type="button"
+              class="nav-link nav-dropdown-toggle"
+              aria-expanded="false"
+              aria-haspopup="true"
+            >
+              <span>Explore</span>
+              <svg class="nav-caret" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path d="M4.2 6.2a.75.75 0 0 1 1.06 0L8 8.94l2.74-2.74a.75.75 0 1 1 1.06 1.06l-3.27 3.27a.75.75 0 0 1-1.06 0L4.2 7.26a.75.75 0 0 1 0-1.06z"/>
+              </svg>
+            </button>
+            <ul class="nav-dropdown-menu">
+              <li><a href="locations.html#locations-results" class="nav-dropdown-link">Available Cities</a></li>
+              <li><a href="locations.html#search-section" class="nav-dropdown-link">Search by Area</a></li>
+              <li><a href="book-hostel.html" class="nav-dropdown-link">Reserve a Room</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="../index.html#faqs" class="nav-link">FAQs</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#contact" class="nav-link">Contact Us</a>
+          </li>
+        </ul>
+
+        <div class="nav-actions">
+          <button type="button" id="nav-search-btn" class="nav-icon-btn" aria-label="Jump to account form">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+
+          <button type="button" id="dark-mode-toggle" class="nav-theme-btn" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>
+            </svg>
+            <span>Dark Mode</span>
+          </button>
+
+          <a href="login.html" class="btn btn-primary nav-login-btn" aria-current="page">Login / Sign Up</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="login-hero">
+      <div class="container hero-content">
+        <span class="hero-badge">
+          <svg class="hero-badge-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 12c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/>
+          </svg>
+          <span>STUDENT ACCOUNT PORTAL</span>
+        </span>
+        <h1 class="hero-title">Login or Create an Account</h1>
+        <p class="hero-subtitle">
+          Access your Student Shelter profile to track hostel inquiries, manage bookings, and save your preferred university areas.
+        </p>
+      </div>
+    </section>
+
+    <section id="auth-section" class="auth-section">
+      <div class="container">
+        <div class="auth-card">
+          <div class="auth-tabs" role="tablist" aria-label="Account actions">
+            <button
+              type="button"
+              id="tab-login"
+              class="auth-tab active"
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-login"
+            >
+              Login
+            </button>
+            <button
+              type="button"
+              id="tab-signup"
+              class="auth-tab"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-signup"
+            >
+              Sign Up
+            </button>
+          </div>
+
+          <div id="panel-login" class="auth-panel" role="tabpanel" aria-labelledby="tab-login">
+            <div class="auth-card-header">
+              <h2 class="auth-card-title">Welcome Back</h2>
+              <p class="auth-card-subtitle">Sign in with your registered email address and password.</p>
+            </div>
+
+            <form id="login-form" class="auth-form" novalidate>
+              <div id="login-error-summary" class="form-error-summary" role="alert" hidden>
+                Please fix the highlighted fields to continue.
+              </div>
+
+              <div id="login-info-banner" class="form-info-banner" role="status" aria-live="polite" hidden></div>
+
+              <div class="field-group">
+                <label for="login-email" class="field-label">
+                  Email Address <span class="required-mark">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="login-email"
+                  name="email"
+                  class="form-input"
+                  placeholder="student@university.edu.pk"
+                  autocomplete="email"
+                  required
+                >
+                <p id="error-login-email" class="field-error" aria-live="polite" hidden></p>
+              </div>
+
+              <div class="field-group">
+                <label for="login-password" class="field-label">
+                  Password <span class="required-mark">*</span>
+                </label>
+                <div class="password-input-wrap">
+                  <input
+                    type="password"
+                    id="login-password"
+                    name="password"
+                    class="form-input password-input"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                  >
+                  <button
+                    type="button"
+                    class="password-toggle-btn"
+                    data-target="login-password"
+                    aria-label="Show password"
+                    aria-pressed="false"
+                  >
+                    Show
+                  </button>
+                </div>
+                <p id="error-login-password" class="field-error" aria-live="polite" hidden></p>
+              </div>
+
+              <div class="auth-options-row">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="remember-me" name="rememberMe">
+                  <span>Remember me on this device</span>
+                </label>
+                <button type="button" id="forgot-password-btn" class="text-link-btn">
+                  Forgot password?
+                </button>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary submit-btn">Login to Account</button>
+              </div>
+
+              <p class="auth-switch-text">
+                New to Student Shelter?
+                <button type="button" class="text-link-btn" data-switch-tab="signup">Create an account</button>
+              </p>
+            </form>
+          </div>
+
+          <div id="panel-signup" class="auth-panel" role="tabpanel" aria-labelledby="tab-signup" hidden>
+            <div class="auth-card-header">
+              <h2 class="auth-card-title">Create Student Account</h2>
+              <p class="auth-card-subtitle">All fields marked with <span class="required-mark">*</span> are required.</p>
+            </div>
+
+            <form id="signup-form" class="auth-form" novalidate>
+              <div id="signup-error-summary" class="form-error-summary" role="alert" hidden>
+                Please fix the highlighted fields to create your account.
+              </div>
+
+              <div class="field-group">
+                <label for="signup-name" class="field-label">
+                  Full Name <span class="required-mark">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="signup-name"
+                  name="fullName"
+                  class="form-input"
+                  placeholder="Enter your full name"
+                  autocomplete="name"
+                  required
+                >
+                <p id="error-signup-name" class="field-error" aria-live="polite" hidden></p>
+              </div>
+
+              <div class="form-row-2">
+                <div class="field-group">
+                  <label for="signup-email" class="field-label">
+                    Email Address <span class="required-mark">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="signup-email"
+                    name="email"
+                    class="form-input"
+                    placeholder="student@university.edu.pk"
+                    autocomplete="email"
+                    required
+                  >
+                  <p id="error-signup-email" class="field-error" aria-live="polite" hidden></p>
+                </div>
+
+                <div class="field-group">
+                  <label for="signup-phone" class="field-label">
+                    Contact Number <span class="required-mark">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    id="signup-phone"
+                    name="phone"
+                    class="form-input"
+                    placeholder="03XX-XXXXXXX"
+                    autocomplete="tel"
+                    required
+                  >
+                  <p id="error-signup-phone" class="field-error" aria-live="polite" hidden></p>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label for="signup-city" class="field-label">
+                  Preferred City <span class="required-mark">*</span>
+                </label>
+                <select id="signup-city" name="city" class="form-select" required>
+                  <option value="">-- Select your study city --</option>
+                  <option value="Islamabad">Islamabad</option>
+                  <option value="Rawalpindi">Rawalpindi</option>
+                  <option value="Lahore">Lahore</option>
+                  <option value="Karachi">Karachi</option>
+                </select>
+                <p id="error-signup-city" class="field-error" aria-live="polite" hidden></p>
+              </div>
+
+              <div class="form-row-2">
+                <div class="field-group">
+                  <label for="signup-password" class="field-label">
+                    Password <span class="required-mark">*</span>
+                  </label>
+                  <div class="password-input-wrap">
+                    <input
+                      type="password"
+                      id="signup-password"
+                      name="password"
+                      class="form-input password-input"
+                      placeholder="Min. 6 characters"
+                      autocomplete="new-password"
+                      required
+                    >
+                    <button
+                      type="button"
+                      class="password-toggle-btn"
+                      data-target="signup-password"
+                      aria-label="Show password"
+                      aria-pressed="false"
+                    >
+                      Show
+                    </button>
+                  </div>
+                  <p id="error-signup-password" class="field-error" aria-live="polite" hidden></p>
+                </div>
+
+                <div class="field-group">
+                  <label for="signup-confirm-password" class="field-label">
+                    Confirm Password <span class="required-mark">*</span>
+                  </label>
+                  <div class="password-input-wrap">
+                    <input
+                      type="password"
+                      id="signup-confirm-password"
+                      name="confirmPassword"
+                      class="form-input password-input"
+                      placeholder="Re-enter password"
+                      autocomplete="new-password"
+                      required
+                    >
+                    <button
+                      type="button"
+                      class="password-toggle-btn"
+                      data-target="signup-confirm-password"
+                      aria-label="Show password"
+                      aria-pressed="false"
+                    >
+                      Show
+                    </button>
+                  </div>
+                  <p id="error-signup-confirm-password" class="field-error" aria-live="polite" hidden></p>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="signup-terms" name="terms" required>
+                  <span>I agree to the Student Shelter terms of service and student verification policy. <span class="required-mark">*</span></span>
+                </label>
+                <p id="error-signup-terms" class="field-error" aria-live="polite" hidden></p>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary submit-btn">Create Account</button>
+              </div>
+
+              <p class="auth-switch-text">
+                Already have an account?
+                <button type="button" class="text-link-btn" data-switch-tab="login">Login here</button>
+              </p>
+            </form>
+          </div>
+
+          <div id="auth-confirmation" class="auth-confirmation" role="status" aria-live="polite" hidden>
+            <div id="confirmation-badge" class="confirmation-badge">Authenticated</div>
+            <h2 id="confirmation-title" class="confirmation-title">Welcome to Student Shelter!</h2>
+            <p id="confirmation-text" class="confirmation-text"></p>
+            <dl id="confirmation-summary" class="confirmation-summary"></dl>
+            <div class="confirmation-actions">
+              <a href="book-hostel.html" class="btn btn-primary">Book a Hostel</a>
+              <a href="locations.html" class="btn btn-outline">Browse Locations</a>
+              <button type="button" id="logout-btn" class="btn btn-outline">Sign Out</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="../logo.jpg" alt="Student Shelter Logo" class="footer-brand-logo">
+            <span class="footer-brand-text">Student Shelter</span>
+          </div>
+          <p class="footer-description">
+            Helping university students discover comfortable, verified, and budget-friendly hostels near top campuses across Pakistan.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="book-hostel.html">Book a Hostel</a></li>
+            <li><a href="../index.html#about">About Us</a></li>
+            <li><a href="../index.html#faqs">FAQs</a></li>
+            <li><a href="login.html">Login / Sign Up</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Contact Us</h3>
+          <ul class="footer-contact-list">
+            <li>Email: support@studentshelter.pk</li>
+            <li>Phone: +92 300 1234567</li>
+            <li>Hours: Mon - Sat, 9:00 AM - 7:00 PM</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Student Shelter. All rights reserved.</p>
+        <p>Safe stays for students across Pakistan.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/login.js" defer></script>
+</body>
+</html>
