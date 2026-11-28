@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews &amp; Ratings | Studenty Shelter</title>
+  <meta name="description" content="Read verified student reviews and ratings for hostels in Islamabad, Rawalpindi, and Lahore on Studenty Shelter.">
+
+  <!-- Google Font: Poppins (with sans-serif fallback defined in css/style.css) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- =======================================================================
+       NAVBAR (Sticky, White Background, Dark Green Text)
+       ======================================================================= -->
+  <header class="site-header">
+    <nav class="container navbar-inner" aria-label="Main navigation">
+
+      <!-- Left: Brand Logo -->
+      <a href="index.html" class="nav-logo">
+        <svg width="28" height="28" class="nav-logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 10.5L12 3l9 7.5"></path>
+          <path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5"></path>
+          <path d="M9 21v-6a3 3 0 0 1 6 0v6"></path>
+        </svg>
+        <span>Studenty Shelter</span>
+      </a>
+
+      <!-- Mobile Hamburger Button (Visible under 768px) -->
+      <button
+        type="button"
+        id="nav-toggle"
+        class="nav-toggle"
+        aria-expanded="false"
+        aria-controls="nav-links"
+        aria-label="Open navigation menu"
+      >
+        <svg width="24" height="24" class="icon icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <svg width="24" height="24" class="icon icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Right: Navigation Links ("Reviews" is active) -->
+      <ul id="nav-links" class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
+        <li><a href="hostels.html" class="nav-link">Find a Hostel</a></li>
+        <li><a href="reviews.html" class="nav-link active" aria-current="page">Reviews</a></li>
+        <li><a href="list-hostel.html" class="nav-link">List Hostel</a></li>
+        <li><a href="login.html" class="nav-link">Login</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+    </nav>
+  </header>
+
+  <!-- =======================================================================
+       MAIN CONTENT
+       ======================================================================= -->
+  <main class="main-content">
+
+    <!-- 1. Page Header (Light green background) -->
+    <section class="page-header">
+      <div class="container">
+        <h1>Reviews and ratings</h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+
+        <!-- 2. Rating Summary: Overall Score Card + 5-to-1 Star Breakdown Card -->
+        <div class="rating-summary-grid" aria-label="Rating summary">
+          <div class="card rating-overview-card">
+            <div class="rating-score">
+              <span id="average-rating">0.0</span> <span class="rating-max">/ 5</span>
+            </div>
+            <div id="average-stars" class="rating-stars-row" aria-label="Average star rating"></div>
+            <p id="total-reviews" class="rating-count">0 reviews</p>
+          </div>
+
+          <div class="card rating-bars-card" id="rating-bars" aria-label="Rating distribution">
+            <!-- Populated dynamically by js/reviews.js for 5, 4, 3, 2, and 1 star -->
+          </div>
+        </div>
+
+        <!-- 3. Filter Bar: Hostel, Rating, Sort by, and Search button -->
+        <form id="filter-form" class="card filter-card" aria-label="Filter and sort reviews">
+          <div class="filter-bar">
+            <div class="form-group">
+              <label for="filter-hostel" class="form-label">Hostel</label>
+              <select id="filter-hostel" name="hostel">
+                <option value="all">All Hostels</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="filter-rating" class="form-label">Rating</label>
+              <select id="filter-rating" name="rating">
+                <option value="all">All Ratings</option>
+                <option value="5">5 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="2">2 Stars</option>
+                <option value="1">1 Star</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="sort-by" class="form-label">Sort by</label>
+              <select id="sort-by" name="sortBy">
+                <option value="newest">Newest</option>
+                <option value="highest">Highest rated</option>
+                <option value="lowest">Lowest rated</option>
+              </select>
+            </div>
+
+            <button type="submit" id="search-btn" class="btn">
+              <svg width="24" height="24" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <span>Search</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- 4. Review Cards Grid (3 desktop, 2 tablet, 1 mobile) -->
+        <div id="reviews-grid" class="reviews-grid" aria-live="polite">
+          <!-- Review cards are rendered here by js/reviews.js -->
+        </div>
+
+        <!-- 5a. Desktop/Tablet Pagination (6 per page) -->
+        <nav id="pagination" class="pagination" aria-label="Reviews pagination"></nav>
+
+        <!-- 5b. Mobile "Load more" button (shown under 768px) -->
+        <div id="load-more-wrap" class="load-more-wrap">
+          <button type="button" id="load-more-btn" class="btn load-more-btn">
+            Load more
+          </button>
+        </div>
+
+        <!-- 6. Write a Review Form -->
+        <section class="card review-form-card" aria-labelledby="write-review-heading">
+          <h2 id="write-review-heading" class="review-form-title">Write a review</h2>
+
+          <!-- Success Alert (hidden until a review is submitted) -->
+          <div id="form-success" class="form-success hidden" role="status" aria-live="polite">
+            <svg width="24" height="24" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <span>Thank you! Your review has been added and saved.</span>
+          </div>
+
+          <form id="review-form" novalidate>
+            <div class="review-form-layout">
+
+              <!-- Left: Name, Hostel, Stars row + Comment box -->
+              <div class="review-form-fields">
+                <div class="review-form-row">
+                  <div class="form-group">
+                    <label for="reviewer-name" class="form-label">Name</label>
+                    <input
+                      type="text"
+                      id="reviewer-name"
+                      name="name"
+                      placeholder="e.g. Ayesha Khan"
+                      required
+                    >
+                    <span id="error-name" class="field-error" role="alert"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="review-hostel" class="form-label">Hostel</label>
+                    <select id="review-hostel" name="hostel" required>
+                      <option value="">Select a hostel</option>
+                    </select>
+                    <span id="error-hostel" class="field-error" role="alert"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <span id="stars-label" class="form-label">Stars</span>
+                    <div
+                      id="star-rating-input"
+                      class="star-rating-input"
+                      role="radiogroup"
+                      aria-labelledby="stars-label"
+                    >
+                      <button type="button" class="star-btn" data-value="1" role="radio" aria-checked="false" aria-label="1 star">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                      </button>
+                      <button type="button" class="star-btn" data-value="2" role="radio" aria-checked="false" aria-label="2 stars">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                      </button>
+                      <button type="button" class="star-btn" data-value="3" role="radio" aria-checked="false" aria-label="3 stars">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                      </button>
+                      <button type="button" class="star-btn" data-value="4" role="radio" aria-checked="false" aria-label="4 stars">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                      </button>
+                      <button type="button" class="star-btn" data-value="5" role="radio" aria-checked="false" aria-label="5 stars">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                      </button>
+                    </div>
+                    <input type="hidden" id="review-rating" name="rating" value="0">
+                    <span id="error-rating" class="field-error" role="alert"></span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="review-comment" class="form-label">Comment</label>
+                  <textarea
+                    id="review-comment"
+                    name="comment"
+                    rows="3"
+                    placeholder="Share your experience with rooms, Wi-Fi, mess, and location (minimum 10 characters)..."
+                    required
+                  ></textarea>
+                  <span id="error-comment" class="field-error" role="alert"></span>
+                </div>
+              </div>
+
+              <!-- Right: Submit button -->
+              <div class="review-form-submit-wrap">
+                <button type="submit" class="btn review-submit-btn">Submit</button>
+              </div>
+
+            </div>
+          </form>
+        </section>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =======================================================================
+       FOOTER (Dark Green Background, White Text, 3 Columns)
+       ======================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Column 1: Logo & About Text -->
+        <div>
+          <a href="index.html" class="footer-logo">
+            <svg width="28" height="28" class="nav-logo-icon" style="color: var(--white);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 10.5L12 3l9 7.5"></path>
+              <path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5"></path>
+              <path d="M9 21v-6a3 3 0 0 1 6 0v6"></path>
+            </svg>
+            <span>Studenty Shelter</span>
+          </a>
+          <p class="footer-about">
+            Helping university students across Pakistan discover safe, comfortable, and budget-friendly hostels near their campuses — with verified facilities and honest student reviews.
+          </p>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div>
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="hostels.html">Find a Hostel</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="list-hostel.html">List Hostel</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Contact Info & Social Icons -->
+        <div>
+          <h3 class="footer-heading">Contact Us</h3>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <svg width="24" height="24" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>Sector H-12, Islamabad, Pakistan</span>
+            </li>
+            <li class="footer-contact-item">
+              <svg width="24" height="24" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <a href="tel:+923001234567">+92 300 1234567</a>
+            </li>
+            <li class="footer-contact-item">
+              <svg width="24" height="24" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="m22 7-10 6L2 7"></path>
+              </svg>
+              <a href="mailto:hello@studentyshelter.pk">hello@studentyshelter.pk</a>
+            </li>
+          </ul>
+
+          <div class="social-links" aria-label="Social media links">
+            <a href="#" class="social-link" aria-label="Facebook">
+              <svg width="24" height="24" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg width="24" height="24" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="WhatsApp">
+              <svg width="24" height="24" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <svg width="24" height="24" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright Line -->
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year">2026</span> Studenty Shelter. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shared & Page JavaScript -->
+  <script src="js/main.js"></script>
+  <script src="js/reviews.js"></script>
+</body>
+</html>
