@@ -1,0 +1,75 @@
+Checking the C:\Users\U&I LAPTOPS\Desktop\IICT folder before writing the files there.
+
+Running final verification on C:\Users\U&I LAPTOPS\Desktop\IICT.
+
+I have created the base files for Studenty Shelter inside C:\Users\U&I LAPTOPS\Desktop\IICT:
+
+css/style.css — Shared theme and responsive layout styles:
+CSS variables in :root: --green-dark: #064E2B, --green-light: #EAF5E8, --white: #FFFFFF, and --text: #1F2937.
+Uses 'Poppins', sans-serif, white main background, dark green headings, and .section-light for light green section backgrounds.
+Reusable .card (16px rounded corners, 0 4px 14px rgba(6, 78, 43, 0.10) shadow), .btn / .btn-outline (10px rounded corners, smooth hover transition), and form inputs/dropdowns (1px solid var(--green-light) border, 10px rounded corners, dark green :focus outline).
+Sticky .site-header navbar with light green pill .nav-link.active highlight, tablet sizing (768px–1080px), mobile hamburger dropdown under 768px, and a 3-column .site-footer that stacks into 1 column on mobile.
+js/main.js — Shared vanilla JavaScript:
+initMobileMenu() opens and closes #nav-links via #nav-toggle, updates aria-expanded / aria-label, and closes on link click, outside click, Escape, or resizing to >= 768px.
+highlightActiveNavLink() reads window.location.pathname and moves .active (and aria-current="page") to the matching nav link automatically.
+updateCopyrightYear() updates #current-year in the footer.
+template.html — Empty starter page with beginner comments:
+Includes Poppins from Google Fonts, inline line-style SVGs, the sticky navbar (Studenty Shelter logo + Home, About Us, Find a Hostel, Facilities, Locations, Reviews, Contact, Login / Sign Up), an empty <main class="main-content"> placeholder, and the 3-column dark green footer (logo + about text, quick links, contact info + Facebook, Instagram, WhatsApp, and LinkedIn icons, and copyright line).
+Note: if you save copied pages inside your pages/ folder instead of the root IICT/ folder, update the stylesheet and script paths in those copies to ../css/style.css and ../js/main.js.
+Verification
+Verified that template.html, css/style.css, and js/main.js exist in C:\Users\U&I LAPTOPS\Desktop\IICT and ran node --check on js/main.js with exit code 0.
+Running syntax check on the JavaScript files and confirming the created files.
+
+I have built the Reviews & Ratings page for Studenty Shelter matching reviews_ratings_page_wireframe.png and keeping the green-and-white theme (#064E2B, #EAF5E8, #FFFFFF).
+
+Files Created
+reviews.html — Built from template.html with the sticky navbar (Reviews active), light green page header ("Reviews & Ratings" / "What students say about our hostels"), 2-card rating summary, filter bar, review cards grid, pagination / mobile "Load more" button, "Write a review" form, and 3-column dark green footer.
+js/reviews.js — Implements all interactive behavior:
+12 sample reviews (DEFAULT_REVIEWS) from students in Islamabad, Rawalpindi, and Lahore across 6 made-up hostels (HOSTELS), persisted in localStorage (studentyShelterReviews_v1).
+Dynamic rating summary: renderSummary() computes the average score, total review count, star icons, and horizontal bar widths for 5, 4, 3, 2, and 1 star.
+Filtering & sorting: getFilteredAndSortedReviews() filters by Hostel and Rating, and sorts by Newest, Highest rated, or Lowest rated, showing "No reviews found. Try changing your filters." when empty.
+Responsive pagination: Displays 6 reviews per page with Previous, numbered buttons, and Next on desktop/tablet (>= 768px), and swaps to a full-width "Load more" button under 768px.
+Interactive review form: Clickable 1–5 star rating with hover preview (setupStarRatingInput()), inline validation (Name, Hostel, Stars, and Comment with minimum 10 characters), prepending new reviews to the top of the list, saving to localStorage, refreshing the summary/bars immediately, showing the green confirmation banner, and resetting the form.
+Files Changed
+css/style.css — Appended Section 8 (.page-header, .rating-summary-grid, .filter-card/.filter-bar, .reviews-grid with 3/2/1 responsive columns, .review-card fade-in animation and hover lift, .pagination/.load-more-wrap, .review-form-layout, and .star-rating-input) without altering the existing theme variables or base styles.
+Verification
+Checked all file paths in C:\Users\U&I LAPTOPS\Desktop\IICT and ran node --check on js/main.js and js/reviews.js, exiting with code 0.
+I have built the Contact Us page for Studenty Shelter matching contact_us_page_wireframe.png and keeping the green-and-white theme (#064E2B, #EAF5E8, #FFFFFF).
+
+Files Created
+contact.html — Built from template.html with the sticky navbar (Contact active), light green page header ("Contact Us" / "We are here to help you find your shelter"), two-column contact layout (stacked on mobile), full-width rounded Google Maps iframe for Islamabad, Pakistan, 5-question FAQ accordion, and 3-column dark green footer.
+js/contact.js — Implements:
+Form validation (initContactForm()): requires Full Name, valid Email format, 11-digit Phone starting with 03 (/^03\d{9}$/), Subject, and Message (10 to 500 characters), displaying inline error messages and highlighting invalid fields with .is-invalid.
+Live character counter: updates #message-counter (0 / 500 characters) as you type and resets cleanly on submission.
+Success message: shows the light green banner "Thank you! Your message has been sent. We will reply soon." and resets the form.
+Single-open FAQ accordion (initFaqAccordion()): toggles + / - icons and aria-expanded, ensuring only one answer is open at a time.
+Files Changed
+css/style.css — Appended Section 9 (.contact-grid, .contact-info-card and .contact-info-item hover effects, .contact-social-btn round buttons that turn dark green on hover, .map-card/.map-iframe, .char-counter, and .faq-item/.faq-answer smooth grid-row accordion animation) without changing the existing theme variables or earlier sections.
+Verification
+Checked all file paths in C:\Users\U&I LAPTOPS\Desktop\IICT and ran node --check on js/contact.js, exiting with code 0.
+Checking the List Your Hostel files and JavaScript syntax.
+
+Running final verification on the List Your Hostel page files.
+
+I have built the List Your Hostel page for Studenty Shelter matching list_your_hostel_page_wireframe.png and keeping the green-and-white theme (#064E2B, #EAF5E8, #FFFFFF).
+
+NOTE
+
+I kept the shared 8-link navbar on list-hostel.html instead of adding a 9th "List Your Hostel" link, because adding a 9th link causes the single-row navbar to overflow/wrap at 768px tablet width.
+
+Files Created
+list-hostel.html — Built from template.html with:
+Light green page header ("List Your Hostel" / "Reach students who are looking for a hostel").
+"How it works" 3-card row (1 Fill the form, 2 Get approved, 3 Get bookings) with dark green numbered circles, stacking into 1 column on mobile.
+"Hostel Registration Form" card in 2 columns on desktop and 1 on mobile: Owner name, Phone number, Hostel name, City dropdown (Islamabad, Rawalpindi, Lahore, Karachi, Peshawar, Other), Hostel type (Boys, Girls), Monthly rent (PKR), Facilities checkboxes (Wi-Fi, Mess, Laundry, AC, Parking, Security, Electricity backup), + Photos upload box, Description textarea, confirmation checkbox, and Submit button.
+Success popup modal (#success-modal) and the shared sticky navbar and 3-column footer.
+js/list-hostel.js — Implements:
+Photo upload: accepts up to 5 JPG/PNG images, renders thumbnail previews with FileReader and per-image × remove buttons, and shows inline errors if the file type or 5-photo limit is exceeded.
+Live description counter: updates #description-counter (0 / 300 characters) as you type.
+Form validation: checks required fields, 11-digit phone starting with 03 (/^03\d{9}$/), positive monthly rent, at least one selected facility, description length (<= 300), and the confirmation checkbox, showing inline errors and .is-invalid highlights.
+Success modal & reset: opens #success-modal ("Your hostel has been submitted for approval. We will contact you soon.") and resets the form, counter, and photo previews.
+Files Changed
+css/style.css — Appended Section 10 (.steps-grid, .step-card hover lift, .step-number, .hostel-form-grid, .facilities-group, .media-desc-grid, .photo-upload-box, .photo-preview-item, .hostel-submit-btn hover effect, and .modal-backdrop/.modal-card) without changing the existing theme variables or earlier sections.
+Verification
+Checked all file paths in C:\Users\U&I LAPTOPS\Desktop\IICT and ran node --check on js/list-hostel.js, exiting with code 0.
+IICT also generate index.html and readme file for these pages that you generate
