@@ -1,0 +1,143 @@
+/* Boys / Girls / Single Rooms pages */
+.theme-blue  { --accent: #0753b5; --dark: #06317a; --soft: #d9efff; }
+.theme-pink  { --accent: #c0186a; --dark: #930f50; --soft: #ffe0ee; }
+.theme-green { --accent: #138a36; --dark: #0a6b27; --soft: #dcf6df; }
+
+.listing-main { padding: 32px 0 48px; }
+
+.listing-panel {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 16px;
+  background: var(--soft);
+  border: 3px solid var(--accent);
+  border-radius: 16px;
+}
+
+/* Heading */
+.page-badge {
+  display: inline-block;
+  padding: 4px 36px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  border-radius: 999px;
+}
+.listing-head h1 {
+  margin: 6px 0 0;
+  color: var(--dark);
+  font-size: clamp(1.8rem, 7vw, 3rem);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.listing-head p { margin-bottom: 14px; color: #111; font-style: italic; font-weight: 600; }
+
+/* Filters */
+.filter-box {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+}
+.filter-field {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.filter-field > i { width: 44px; text-align: center; color: var(--dark); font-size: 1.15rem; }
+.filter-field .form-select {
+  border: 0;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: .85rem;
+}
+.btn-search {
+  padding: 10px;
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.btn-search:hover { background: var(--dark); }
+
+/* Result count, sort, reset */
+.result-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+  color: var(--dark);
+  font-weight: 700;
+  font-size: .9rem;
+}
+.result-actions { display: flex; gap: 8px; }
+.result-actions .form-select { width: auto; font-size: .85rem; }
+.btn-reset {
+  padding: 4px 14px;
+  background: #fff;
+  color: var(--dark);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+/* Cards */
+.listing-card {
+  display: flex;
+  gap: 14px;
+  padding: 10px;
+  margin-bottom: 12px;
+  background: #fff;
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+}
+.listing-card img { width: 38%; min-height: 160px; object-fit: cover; border-radius: 8px; }
+.card-info { flex: 1; min-width: 0; }
+.card-info h2 { color: #0b1f4d; font-size: 1.15rem; font-weight: 900; text-transform: uppercase; }
+.card-info ul { list-style: none; padding: 0; margin-bottom: 10px; }
+.card-info li {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 3px;
+  color: #111;
+  font-size: .85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.card-info li i { color: var(--dark); }
+.btn-details {
+  display: inline-block;
+  padding: 6px 22px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.btn-details:hover { background: var(--dark); color: #fff; }
+.no-result { padding: 24px; background: #fff; color: #111; text-align: center; border-radius: 12px; }
+
+/* Mobile */
+@media (max-width: 480px) {
+  .listing-card { flex-direction: column; }
+  .listing-card img { width: 100%; height: 190px; }
+}
+
+/* Dark mode */
+[data-bs-theme="dark"] .listing-panel { background: #17191d; }
+[data-bs-theme="dark"] :is(.listing-head h1, .result-bar) { color: #fff; }
+[data-bs-theme="dark"] :is(.listing-head p, .card-info h2, .card-info li, .no-result) { color: #e8e8e8; }
+[data-bs-theme="dark"] :is(.filter-box, .listing-card, .no-result) { background: #23262b; }
+[data-bs-theme="dark"] :is(.filter-field > i, .card-info li i) { color: #fff; }
+[data-bs-theme="dark"] .btn-reset { background: #23262b; color: #fff; }
