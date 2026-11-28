@@ -1,0 +1,436 @@
+/* ==========================================================================
+   reviews.css - Reviews & Ratings page (reviews.html)
+   Load AFTER css/style.css. Uses the colors, shadows and radii defined in the
+   :root variables of style.css, so the page always matches the shared theme.
+   Shared pieces that stay in style.css: .page-header, .card, .btn, form
+   controls, .form-success, .field-error, .is-invalid and .hidden.
+   ========================================================================== */
+
+/* Rating Summary: Overall score card + 5-to-1 star breakdown card */
+.rating-summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.rating-overview-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.55rem;
+}
+
+.rating-score {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  line-height: 1.1;
+}
+
+.rating-score .rating-max {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.rating-stars-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.rating-stars-row .star-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.rating-count {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.rating-bars-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.rating-bar-row {
+  display: grid;
+  grid-template-columns: 56px 1fr 44px;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.rating-bar-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.rating-bar-track {
+  height: 12px;
+  background-color: var(--green-light);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.rating-bar-fill {
+  height: 100%;
+  width: 0%;
+  background-color: var(--green-dark);
+  border-radius: var(--radius-pill);
+  transition: width 0.45s ease;
+}
+
+.rating-bar-count {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+/* Filter Bar: 3 dropdowns + Search button */
+.filter-card {
+  margin-bottom: 2rem;
+  padding: 1.25rem 1.5rem;
+}
+
+.filter-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) auto;
+  gap: 1rem;
+  align-items: end;
+}
+
+.filter-bar .form-group {
+  margin-bottom: 0;
+}
+
+/* Review Cards Grid: 3 columns desktop, 2 tablet, 1 mobile */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@keyframes reviewFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+  animation: reviewFadeIn 0.35s ease both;
+}
+
+.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(6, 78, 43, 0.14);
+}
+
+.review-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.review-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--green-light);
+  color: var(--green-dark);
+  font-weight: 700;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.review-author {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--green-dark);
+}
+
+.review-city {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.review-hostel {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--green-dark);
+}
+
+.review-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.star-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.star-filled {
+  color: var(--green-dark);
+  fill: var(--green-dark);
+}
+
+.star-empty {
+  color: var(--green-dark);
+  opacity: 0.25;
+  fill: none;
+}
+
+.review-comment {
+  font-size: 0.92rem;
+  color: var(--text);
+  flex: 1;
+}
+
+.review-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: auto;
+}
+
+/* Empty State when no reviews match the active filters */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 2.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.empty-state-icon {
+  width: 40px;
+  height: 40px;
+  color: var(--green-dark);
+  opacity: 0.65;
+}
+
+.empty-state p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* Desktop Pagination & Mobile "Load more" */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.page-btn {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 0.85rem;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--green-light);
+  background-color: var(--white);
+  color: var(--green-dark);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.page-btn:hover:not(:disabled) {
+  background-color: var(--green-light);
+}
+
+.page-btn.active {
+  background-color: var(--green-dark);
+  color: var(--white);
+  border-color: var(--green-dark);
+}
+
+.page-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.page-btn:focus-visible {
+  outline: 2px solid var(--green-dark);
+  outline-offset: 2px;
+}
+
+.load-more-wrap {
+  display: none;
+  margin-top: 1.5rem;
+}
+
+.load-more-btn {
+  width: 100%;
+}
+
+/* Write a Review Form */
+.review-form-card {
+  margin-top: 2.5rem;
+}
+
+.review-form-title {
+  font-size: 1.35rem;
+  margin-bottom: 1.25rem;
+}
+
+.review-form-layout {
+  display: grid;
+  grid-template-columns: 1fr 210px;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.review-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.review-form-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.review-form-fields .form-group {
+  margin-bottom: 0;
+}
+
+.review-form-submit-wrap {
+  display: flex;
+  align-items: stretch;
+}
+
+.review-submit-btn {
+  width: 100%;
+  font-size: 1rem;
+}
+
+/* Interactive Clickable Star Rating Input */
+.star-rating-input {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  min-height: 46px;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--green-light);
+  border-radius: var(--radius-control);
+  background-color: var(--white);
+  width: 100%;
+}
+
+.star-btn {
+  background: transparent;
+  border: none;
+  padding: 0.15rem;
+  cursor: pointer;
+  color: var(--green-dark);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+
+.star-btn:hover {
+  transform: scale(1.15);
+}
+
+.star-btn:focus-visible {
+  outline: 2px solid var(--green-dark);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.star-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  opacity: 0.3;
+  transition: fill 0.15s ease, opacity 0.15s ease;
+}
+
+.star-btn.is-selected svg,
+.star-btn.is-hovered svg {
+  fill: var(--green-dark);
+  opacity: 1;
+}
+
+/* Responsive adjustments for Reviews & Ratings page */
+@media (max-width: 1023px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filter-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .review-form-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .review-submit-btn {
+    min-height: 48px;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-header {
+    padding: 2.25rem 0;
+  }
+
+  .rating-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .review-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Under 768px: hide numbered pagination and show "Load more" button */
+  .pagination {
+    display: none;
+  }
+
+  .load-more-wrap {
+    display: block;
+  }
+}
