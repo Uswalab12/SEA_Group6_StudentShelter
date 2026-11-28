@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Hostel | Student Shelter</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/booking.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Main Navigation">
+      <a href="../index.html" class="nav-brand">
+        <img src="../logo.jpg" alt="Student Shelter Logo" class="nav-logo">
+        <span class="nav-brand-text">Student Shelter</span>
+      </a>
+
+      <button
+        type="button"
+        class="nav-toggle"
+        id="nav-toggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+      >
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <div class="nav-collapse" id="nav-menu">
+        <ul class="nav-links">
+          <li class="nav-item">
+            <a href="../index.html" class="nav-link">Home</a>
+          </li>
+
+          <li class="nav-item nav-dropdown">
+            <button
+              type="button"
+              class="nav-link nav-dropdown-toggle active"
+              aria-expanded="false"
+              aria-haspopup="true"
+            >
+              <span>Hostels</span>
+              <svg class="nav-caret" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path d="M4.2 6.2a.75.75 0 0 1 1.06 0L8 8.94l2.74-2.74a.75.75 0 1 1 1.06 1.06l-3.27 3.27a.75.75 0 0 1-1.06 0L4.2 7.26a.75.75 0 0 1 0-1.06z"/>
+              </svg>
+            </button>
+            <ul class="nav-dropdown-menu">
+              <li><a href="locations.html" class="nav-dropdown-link">Locations</a></li>
+              <li><a href="book-hostel.html" class="nav-dropdown-link active" aria-current="page">Book a Hostel</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="../index.html#about" class="nav-link">About Us</a>
+          </li>
+
+          <li class="nav-item nav-dropdown">
+            <button
+              type="button"
+              class="nav-link nav-dropdown-toggle"
+              aria-expanded="false"
+              aria-haspopup="true"
+            >
+              <span>Explore</span>
+              <svg class="nav-caret" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                <path d="M4.2 6.2a.75.75 0 0 1 1.06 0L8 8.94l2.74-2.74a.75.75 0 1 1 1.06 1.06l-3.27 3.27a.75.75 0 0 1-1.06 0L4.2 7.26a.75.75 0 0 1 0-1.06z"/>
+              </svg>
+            </button>
+            <ul class="nav-dropdown-menu">
+              <li><a href="locations.html#locations-results" class="nav-dropdown-link">Available Cities</a></li>
+              <li><a href="locations.html#search-section" class="nav-dropdown-link">Search by Area</a></li>
+              <li><a href="#booking-section" class="nav-dropdown-link">Reserve a Room</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="../index.html#faqs" class="nav-link">FAQs</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="#contact" class="nav-link">Contact Us</a>
+          </li>
+        </ul>
+
+        <div class="nav-actions">
+          <button type="button" id="nav-search-btn" class="nav-icon-btn" aria-label="Jump to hostel selection">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+
+          <button type="button" id="dark-mode-toggle" class="nav-theme-btn" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>
+            </svg>
+            <span>Dark Mode</span>
+          </button>
+
+          <a href="login.html" class="btn btn-primary nav-login-btn">Login / Sign Up</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="booking-hero">
+      <div class="container hero-content">
+        <span class="hero-badge">
+          <svg class="hero-badge-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/>
+          </svg>
+          <span>VERIFIED HOSTEL RESERVATIONS</span>
+        </span>
+        <h1 class="hero-title">Book a Hostel</h1>
+        <p class="hero-subtitle">
+          Fill out the reservation form below to request a safe, verified student hostel room in your preferred city.
+        </p>
+      </div>
+    </section>
+
+    <section id="booking-section" class="booking-section">
+      <div class="container">
+        <div class="booking-card">
+          <div class="booking-card-header">
+            <h2 class="booking-card-title">Hostel Booking Request</h2>
+            <p class="booking-card-subtitle">All fields marked with <span class="required-mark">*</span> are required.</p>
+          </div>
+
+          <form id="booking-form" class="booking-form" novalidate>
+            <div id="form-error-summary" class="form-error-summary" role="alert" hidden>
+              Please fill all required fields
+            </div>
+
+            <div class="field-group">
+              <label for="student-name" class="field-label">
+                Student Name <span class="required-mark">*</span>
+              </label>
+              <input
+                type="text"
+                id="student-name"
+                name="studentName"
+                class="form-input"
+                placeholder="Enter your full name"
+                autocomplete="name"
+                required
+              >
+              <p id="error-student-name" class="field-error" aria-live="polite" hidden></p>
+            </div>
+
+            <div class="field-group">
+              <label for="hostel-select" class="field-label">
+                Select Hostel <span class="required-mark">*</span>
+              </label>
+              <select id="hostel-select" name="hostel" class="form-select" required>
+                <option value="">-- Select a hostel --</option>
+              </select>
+              <p id="error-hostel" class="field-error" aria-live="polite" hidden></p>
+            </div>
+
+            <div class="field-group">
+              <label for="contact-number" class="field-label">
+                Contact Number <span class="required-mark">*</span>
+              </label>
+              <input
+                type="tel"
+                id="contact-number"
+                name="contactNumber"
+                class="form-input"
+                placeholder="03XX-XXXXXXX"
+                autocomplete="tel"
+                required
+              >
+              <p id="error-contact-number" class="field-error" aria-live="polite" hidden></p>
+            </div>
+
+            <div class="field-group">
+              <span class="field-label" id="room-type-label">
+                Room Type <span class="required-mark">*</span>
+              </span>
+              <div class="room-type-group" role="radiogroup" aria-labelledby="room-type-label">
+                <label class="room-type-option">
+                  <input type="radio" name="roomType" value="Single" required>
+                  <span class="room-type-text">Single</span>
+                </label>
+                <label class="room-type-option">
+                  <input type="radio" name="roomType" value="Shared" required>
+                  <span class="room-type-text">Shared</span>
+                </label>
+              </div>
+              <p id="error-room-type" class="field-error" aria-live="polite" hidden></p>
+            </div>
+
+            <div class="form-row-2">
+              <div class="field-group">
+                <label for="checkin-date" class="field-label">
+                  Check-in Date <span class="required-mark">*</span>
+                </label>
+                <input
+                  type="date"
+                  id="checkin-date"
+                  name="checkinDate"
+                  class="form-input"
+                  required
+                >
+                <p id="error-checkin-date" class="field-error" aria-live="polite" hidden></p>
+              </div>
+
+              <div class="field-group">
+                <label for="stay-duration" class="field-label">
+                  Stay Duration <span class="required-mark">*</span>
+                </label>
+                <select id="stay-duration" name="stayDuration" class="form-select" required>
+                  <option value="">-- Select duration --</option>
+                  <option value="1 Month">1 Month</option>
+                  <option value="3 Months">3 Months</option>
+                  <option value="6 Months">6 Months</option>
+                  <option value="12 Months">12 Months</option>
+                </select>
+                <p id="error-stay-duration" class="field-error" aria-live="polite" hidden></p>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary submit-btn">Submit Booking Request</button>
+            </div>
+          </form>
+
+          <div id="booking-confirmation" class="booking-confirmation" role="status" aria-live="polite" hidden>
+            <div class="confirmation-badge">Request Received</div>
+            <h3 class="confirmation-title">Booking Request Submitted!</h3>
+            <p class="confirmation-text">
+              Thank you! Our team has received your hostel booking request and will contact you shortly on your provided number.
+            </p>
+            <dl id="confirmation-summary" class="confirmation-summary"></dl>
+            <div class="confirmation-actions">
+              <button type="button" id="new-booking-btn" class="btn btn-primary">Submit Another Request</button>
+              <a href="locations.html" class="btn btn-outline">Browse Locations</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="../logo.jpg" alt="Student Shelter Logo" class="footer-brand-logo">
+            <span class="footer-brand-text">Student Shelter</span>
+          </div>
+          <p class="footer-description">
+            Helping university students discover comfortable, verified, and budget-friendly hostels near top campuses across Pakistan.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="book-hostel.html">Book a Hostel</a></li>
+            <li><a href="../index.html#about">About Us</a></li>
+            <li><a href="../index.html#faqs">FAQs</a></li>
+            <li><a href="login.html">Login / Sign Up</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading">Contact Us</h3>
+          <ul class="footer-contact-list">
+            <li>Email: support@studentshelter.pk</li>
+            <li>Phone: +92 300 1234567</li>
+            <li>Hours: Mon - Sat, 9:00 AM - 7:00 PM</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Student Shelter. All rights reserved.</p>
+        <p>Safe stays for students across Pakistan.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/booking.js" defer></script>
+</body>
+</html>

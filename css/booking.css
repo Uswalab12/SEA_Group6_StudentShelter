@@ -1,0 +1,324 @@
+/* Book a Hostel Page Styles */
+
+/* Hero Section (same layout as locations-hero) */
+.booking-hero {
+  background-color: var(--color-section-bg);
+  padding: 54px 0 50px;
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 6px rgba(6, 78, 43, 0.05);
+}
+
+.hero-badge-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.18;
+  margin-bottom: 12px;
+}
+
+.hero-subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+/* Centered Booking Card Section */
+.booking-section {
+  padding: 44px 0 68px;
+}
+
+.booking-card {
+  max-width: 680px;
+  margin: 0 auto;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 34px 36px;
+}
+
+.booking-card-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.booking-card-title {
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+}
+
+.booking-card-subtitle {
+  color: var(--color-text-muted);
+  font-size: 0.94rem;
+}
+
+.required-mark {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.booking-form[hidden] {
+  display: none;
+}
+
+/* Error State Summary & Field Messages */
+.form-error-summary {
+  background-color: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-size: 0.94rem;
+  font-weight: 600;
+}
+
+.form-error-summary[hidden] {
+  display: none;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.field-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.96rem;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 11px 14px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.form-input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.8;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(6, 78, 43, 0.12);
+}
+
+.form-input[aria-invalid="true"],
+.form-select[aria-invalid="true"] {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+}
+
+/* Room Type Radio Options */
+.room-type-group {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.room-type-group.invalid .room-type-option {
+  border-color: #dc2626;
+}
+
+.room-type-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg);
+  cursor: pointer;
+  transition: border-color var(--transition), background-color var(--transition);
+}
+
+.room-type-option:hover {
+  background-color: var(--color-section-bg);
+}
+
+.room-type-option:has(input:checked) {
+  border-color: var(--color-primary);
+  background-color: var(--color-section-bg);
+}
+
+.room-type-option:focus-within {
+  outline: 3px solid rgba(6, 78, 43, 0.25);
+  outline-offset: 1px;
+}
+
+.room-type-option input[type="radio"] {
+  accent-color: var(--color-primary);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.room-type-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.field-error {
+  color: #dc2626;
+  font-size: 0.84rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.field-error[hidden] {
+  display: none;
+}
+
+.form-actions {
+  padding-top: 6px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 13px 24px;
+  font-size: 1rem;
+}
+
+/* Confirmation View */
+.booking-confirmation {
+  text-align: center;
+  padding: 10px 0 4px;
+}
+
+.booking-confirmation[hidden] {
+  display: none;
+}
+
+.confirmation-badge {
+  display: inline-block;
+  background-color: var(--color-section-bg);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.confirmation-title {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.confirmation-text {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 22px;
+}
+
+.confirmation-summary {
+  text-align: left;
+  background-color: var(--color-section-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 18px;
+  margin-bottom: 24px;
+}
+
+.confirmation-item dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+}
+
+.confirmation-item dd {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.confirmation-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .booking-hero {
+    padding: 40px 0 36px;
+  }
+
+  .booking-section {
+    padding: 28px 0 48px;
+  }
+
+  .booking-card {
+    padding: 22px 20px;
+  }
+
+  .form-row-2,
+  .room-type-group,
+  .confirmation-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .confirmation-actions .btn {
+    width: 100%;
+  }
+}
