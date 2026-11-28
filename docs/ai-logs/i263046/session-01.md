@@ -1,0 +1,1 @@
+[text](../../../../.gemini/antigravity-cli/brain/378ef45c-d799-401a-af46-4a0f6bf8fe1d/.system_generated/logs/transcript_full.jsonl)
