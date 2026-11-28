@@ -1,0 +1,333 @@
+/* ==========================================================================
+   Student Shelter — Hostel Details Stylesheet (css/hostel-details.css)
+   Uses theme variables from css/style.css for light and dark mode support.
+   ========================================================================== */
+
+/* Hero pill readable in both light and dark modes */
+.banner-pill {
+  background-color: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+}
+
+/* Breadcrumb theme integration */
+.breadcrumb-item a {
+  color: var(--ss-dark-green);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+  color: var(--ss-text-muted);
+}
+
+/* Hostel switcher card in hero */
+.selector-card {
+  background-color: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+  border-radius: 1rem;
+  box-shadow: var(--ss-shadow);
+}
+
+.selector-card .form-select,
+.calculator-card .form-select,
+.calculator-card .form-control {
+  border-color: var(--ss-border);
+  background-color: var(--ss-surface);
+  color: var(--ss-text);
+  border-radius: 0.7rem;
+  padding: 0.6rem 0.9rem;
+}
+
+.selector-card .form-select:focus,
+.calculator-card .form-select:focus {
+  border-color: var(--ss-dark-green);
+  box-shadow: 0 0 0 0.2rem rgba(6, 78, 43, 0.18);
+}
+
+/* Demo Notice Banner */
+.demo-notice-box {
+  background-color: var(--ss-light-green);
+  border: 1px solid var(--ss-border);
+  color: var(--ss-dark-green);
+  border-radius: 0.9rem;
+  padding: 0.9rem 1.15rem;
+}
+
+/* Outline Secondary Button matching green theme */
+.btn-outline-ss {
+  border: 1px solid var(--ss-dark-green);
+  color: var(--ss-dark-green);
+  background-color: transparent;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-outline-ss:hover,
+.btn-outline-ss:focus-visible {
+  background-color: var(--ss-light-green);
+  color: var(--ss-dark-green);
+  border-color: var(--ss-dark-green);
+}
+
+/* Visible focus rings for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--ss-dark-green);
+  outline-offset: 2px;
+}
+
+/* Availability Badge */
+.availability-badge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.32rem 0.75rem;
+  border-radius: 999px;
+  background-color: var(--ss-surface);
+  color: var(--ss-dark-green);
+  border: 1px solid var(--ss-border);
+}
+
+.availability-badge.is-limited {
+  background-color: rgba(245, 158, 11, 0.16);
+  color: #92400e;
+  border-color: rgba(245, 158, 11, 0.38);
+}
+
+body.dark-mode .availability-badge.is-limited {
+  color: #fcd34d;
+}
+
+/* Wishlist Summary Pill & Toggle Button */
+.wishlist-summary-badge {
+  background-color: var(--ss-light-green);
+  color: var(--ss-dark-green);
+  border: 1px solid var(--ss-border);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.btn-wishlist {
+  border: 1px solid var(--ss-border);
+  background-color: var(--ss-surface);
+  color: var(--ss-dark-green);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-wishlist:hover {
+  background-color: var(--ss-light-green);
+  color: var(--ss-dark-green);
+  border-color: var(--ss-dark-green);
+}
+
+.btn-wishlist.is-saved {
+  background-color: var(--ss-light-green);
+  border-color: var(--ss-dark-green);
+  color: var(--ss-dark-green);
+}
+
+.btn-wishlist.is-saved i {
+  color: #dc2626;
+}
+
+/* CSS-built Visual Gallery */
+.gallery-main-stage {
+  position: relative;
+  min-height: 290px;
+  border-radius: 0.95rem;
+  padding: 1.25rem;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.gallery-main-stage::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(234, 245, 232, 0.12);
+  top: -60px;
+  right: -45px;
+}
+
+.gallery-main-stage::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: rgba(234, 245, 232, 0.08);
+  bottom: -55px;
+  left: -35px;
+}
+
+.gallery-stage-top,
+.gallery-stage-center,
+.gallery-stage-bottom {
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-stage-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.room-visual-pill {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+}
+
+.room-visual-emerald {
+  background: linear-gradient(135deg, #064e2b 0%, #0b7a43 100%);
+}
+
+.room-visual-forest {
+  background: linear-gradient(135deg, #054426 0%, #14804d 100%);
+}
+
+.room-visual-sage {
+  background: linear-gradient(135deg, #0a5c36 0%, #166534 100%);
+}
+
+.room-visual-teal {
+  background: linear-gradient(135deg, #064e2b 0%, #0f766e 100%);
+}
+
+.room-visual-moss {
+  background: linear-gradient(135deg, #08532f 0%, #15803d 100%);
+}
+
+.gallery-thumb-btn {
+  border: 1px solid var(--ss-border);
+  background-color: var(--ss-light-green);
+  color: var(--ss-dark-green);
+  border-radius: 0.75rem;
+  padding: 0.65rem 0.5rem;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.gallery-thumb-btn:hover {
+  border-color: var(--ss-dark-green);
+}
+
+.gallery-thumb-btn.active {
+  background-color: #064e2b;
+  border-color: #064e2b;
+  color: #ffffff;
+}
+
+body.dark-mode .gallery-thumb-btn.active {
+  background-color: #15803d;
+  border-color: #15803d;
+  color: #ffffff;
+}
+
+/* Pricing & Info Boxes */
+.room-price-box,
+.room-option-box,
+.missing-info-note,
+.info-fact-tile,
+.amenity-tile {
+  background-color: var(--ss-light-green);
+  border: 1px solid var(--ss-border);
+  border-radius: 0.85rem;
+}
+
+.room-price-box {
+  padding: 0.9rem 1rem;
+}
+
+.info-fact-tile,
+.amenity-tile {
+  padding: 0.75rem 0.9rem;
+}
+
+/* Estimator Section */
+.calculator-section {
+  background-color: var(--ss-light-green);
+  border-top: 1px solid var(--ss-border);
+  border-bottom: 1px solid var(--ss-border);
+}
+
+.calculator-card {
+  background-color: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+  border-radius: 1.25rem;
+  box-shadow: var(--ss-shadow);
+}
+
+.calculator-result-box {
+  background-color: var(--ss-light-green);
+  border: 1px solid var(--ss-border);
+  border-radius: 1rem;
+}
+
+.calc-result-label,
+#estimatorTotalOutput {
+  color: var(--ss-dark-green);
+}
+
+/* Empty & Error States */
+.empty-state-card {
+  background-color: var(--ss-surface);
+  border: 1px dashed var(--ss-border);
+  border-radius: 1.15rem;
+  box-shadow: var(--ss-shadow);
+  padding: 2.75rem 1.5rem;
+  text-align: center;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.empty-state-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--ss-light-green);
+  color: var(--ss-dark-green);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Recently Viewed Cards */
+.recent-room-card {
+  background-color: var(--ss-surface);
+  border: 1px solid var(--ss-border);
+  border-radius: 1rem;
+  box-shadow: var(--ss-shadow);
+  padding: 1.15rem;
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.recent-room-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ss-shadow-hover);
+}
