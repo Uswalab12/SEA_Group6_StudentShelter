@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Sign Up — Student Shelter</title>
+  <meta name="description" content="Login or create an account to manage your student hostel bookings.">
+  
+  <script>
+    (function () {
+      if (localStorage.getItem("studentShelterTheme") === "dark") {
+        document.documentElement.setAttribute("data-bs-theme", "dark");
+      }
+    })();
+  </script>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+  
+  <style>
+    /* Custom Green Theme Tabs (No Blue) */
+    .custom-auth-tabs {
+      background-color: #EAF5E8; /* Light Green */
+      border-radius: 50px;
+      padding: 5px;
+    }
+    .custom-auth-tabs .nav-link {
+      color: #064E2B; /* Dark Green */
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .custom-auth-tabs .nav-link.active {
+      background-color: #064E2B !important; /* Dark Green Background */
+      color: #FFFFFF !important; /* White Text */
+      box-shadow: 0 4px 10px rgba(6, 78, 43, 0.2);
+    }
+    .custom-auth-tabs .nav-link:hover:not(.active) {
+      background-color: rgba(6, 78, 43, 0.1);
+    }
+    /* Input focus green */
+    .form-control:focus, .form-select:focus {
+      border-color: #064E2B;
+      box-shadow: 0 0 0 0.25rem rgba(6, 78, 43, 0.25);
+    }
+    .form-check-input:checked {
+      background-color: #064E2B;
+      border-color: #064E2B;
+    }
+    /* Links */
+    .text-dark-green { color: #064E2B !important; }
+    .text-dark-green:hover { color: #0B7A43 !important; }
+  </style>
+</head>
+<body>
+
+  <!-- Header Placeholder (JS Load Karega) -->
+  <div id="header-placeholder"></div>
+
+  <main>
+    <!-- 1. Page Header Banner -->
+    <section class="page-banner-green text-center">
+      <div class="container">
+        <span class="section-highlight-pill bg-white mb-2">Student Account Portal</span>
+        <h1 class="display-5 fw-bold mb-2">Login or Sign Up</h1>
+        <p class="lead text-secondary mx-auto mb-0" style="max-width: 680px;">
+          Access your Student Shelter profile to manage hostel bookings and inquiries.
+        </p>
+      </div>
+    </section>
+
+    <!-- 2. Auth Section -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-5 col-md-7">
+            <div class="card shadow border-0 p-4 p-md-5" style="border-radius: 15px;">
+              
+              <!-- Green Theme Tabs -->
+              <ul class="nav nav-pills nav-justified custom-auth-tabs mb-4" id="authTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="login-tab" data-bs-toggle="pill" data-bs-target="#login-panel" type="button" role="tab" aria-selected="true">Login</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="signup-tab" data-bs-toggle="pill" data-bs-target="#signup-panel" type="button" role="tab" aria-selected="false">Sign Up</button>
+                </li>
+              </ul>
+
+              <!-- Tab Content -->
+              <div class="tab-content" id="authTabsContent">
+                
+                <!-- LOGIN PANEL -->
+                <div class="tab-pane fade show active" id="login-panel" role="tabpanel">
+                  <form id="login-form" novalidate>
+                    <div class="mb-3">
+                      <label for="login-email" class="form-label fw-semibold text-dark-green">Email Address</label>
+                      <input type="email" id="login-email" class="form-control" placeholder="student@university.edu.pk" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="login-password" class="form-label fw-semibold text-dark-green">Password</label>
+                      <input type="password" id="login-password" class="form-control" placeholder="Enter your password" required>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="remember-me">
+                        <label class="form-check-label small text-muted" for="remember-me">Remember me</label>
+                      </div>
+                      <a href="#" class="small text-decoration-none text-dark-green fw-semibold">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-dark-green w-100 py-2">Login to Account</button>
+                  </form>
+                </div>
+
+                <!-- SIGNUP PANEL -->
+                <div class="tab-pane fade" id="signup-panel" role="tabpanel">
+                  <form id="signup-form" novalidate>
+                    <div class="mb-3">
+                      <label for="signup-name" class="form-label fw-semibold text-dark-green">Full Name</label>
+                      <input type="text" id="signup-name" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="signup-email" class="form-label fw-semibold text-dark-green">Email Address</label>
+                      <input type="email" id="signup-email" class="form-control" placeholder="student@university.edu.pk" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="signup-password" class="form-label fw-semibold text-dark-green">Password</label>
+                      <input type="password" id="signup-password" class="form-control" placeholder="Min. 6 characters" minlength="6" required>
+                    </div>
+                    <div class="form-check mb-4">
+                      <input class="form-check-input" type="checkbox" id="signup-terms" required>
+                      <label class="form-check-label small text-muted" for="signup-terms">I agree to the terms of service.</label>
+                    </div>
+                    <button type="submit" class="btn btn-dark-green w-100 py-2">Create Account</button>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Placeholder (JS Load Karega) -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+  <!-- Main JS -->
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Hostel — Student Shelter</title>
+  <meta name="description" content="Submit a reservation request for a safe, verified student hostel room.">
+  
+  <script>
+    (function () {
+      if (localStorage.getItem("studentShelterTheme") === "dark") {
+        document.documentElement.setAttribute("data-bs-theme", "dark");
+      }
+    })();
+  </script>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Header Placeholder (JS Load Karega) -->
+  <div id="header-placeholder"></div>
+
+  <main>
+    <!-- 1. Page Header Banner -->
+    <section class="page-banner-green text-center">
+      <div class="container">
+        <span class="section-highlight-pill bg-white mb-2">Verified Reservations</span>
+        <h1 class="display-5 fw-bold mb-2">Book a Hostel</h1>
+        <p class="lead text-secondary mx-auto mb-0" style="max-width: 680px;">
+          Fill out the form below to request a safe, verified student hostel room in your preferred city.
+        </p>
+      </div>
+    </section>
+
+    <!-- 2. Booking Form Section -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="card shadow-sm border-0 p-4 p-md-5">
+              <h2 class="h3 fw-bold mb-4">Hostel Booking Request</h2>
+              
+              <div id="form-error-summary" class="alert alert-danger d-none" role="alert">
+                Please fill all required fields correctly.
+              </div>
+
+              <form id="booking-form" novalidate>
+                <div class="row g-3">
+                  <!-- Student Name -->
+                  <div class="col-md-6">
+                    <label for="student-name" class="form-label fw-semibold">Student Name <span class="text-danger">*</span></label>
+                    <input type="text" id="student-name" name="studentName" class="form-control" placeholder="Enter your full name" required>
+                    <div class="invalid-feedback" id="error-student-name"></div>
+                  </div>
+
+                  <!-- Contact Number -->
+                  <div class="col-md-6">
+                    <label for="contact-number" class="form-label fw-semibold">Contact Number <span class="text-danger">*</span></label>
+                    <input type="tel" id="contact-number" name="contactNumber" class="form-control" placeholder="03XX-XXXXXXX" required>
+                    <div class="invalid-feedback" id="error-contact-number"></div>
+                  </div>
+
+                  <!-- Select Hostel -->
+                  <div class="col-12">
+                    <label for="hostel-select" class="form-label fw-semibold">Select Hostel <span class="text-danger">*</span></label>
+                    <select id="hostel-select" name="hostel" class="form-select" required>
+                      <option value="">-- Select a hostel --</option>
+                      <option value="Green Valley Scholars Hostel">Green Valley Scholars Hostel (Islamabad)</option>
+                      <option value="Crescent Girls Residency">Crescent Girls Residency (Lahore)</option>
+                      <option value="Campus Edge Student Suites">Campus Edge Student Suites (Karachi)</option>
+                      <option value="Margalla Pines Student Home">Margalla Pines Student Home (Rawalpindi)</option>
+                    </select>
+                    <div class="invalid-feedback" id="error-hostel"></div>
+                  </div>
+
+                  <!-- Room Type -->
+                  <div class="col-12">
+                    <label class="form-label fw-semibold d-block">Room Type <span class="text-danger">*</span></label>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="roomType" id="roomSingle" value="Single" required>
+                      <label class="form-check-label" for="roomSingle">Single Room</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="roomType" id="roomShared" value="Shared" required>
+                      <label class="form-check-label" for="roomShared">Shared Room</label>
+                    </div>
+                    <div class="text-danger small mt-1 d-none" id="error-room-type">Please select a room type.</div>
+                  </div>
+
+                  <!-- Check-in Date -->
+                  <div class="col-md-6">
+                    <label for="checkin-date" class="form-label fw-semibold">Check-in Date <span class="text-danger">*</span></label>
+                    <input type="date" id="checkin-date" name="checkinDate" class="form-control" required>
+                    <div class="invalid-feedback" id="error-checkin-date"></div>
+                  </div>
+
+                  <!-- Stay Duration -->
+                  <div class="col-md-6">
+                    <label for="stay-duration" class="form-label fw-semibold">Stay Duration <span class="text-danger">*</span></label>
+                    <select id="stay-duration" name="stayDuration" class="form-select" required>
+                      <option value="">-- Select duration --</option>
+                      <option value="1 Month">1 Month</option>
+                      <option value="3 Months">3 Months</option>
+                      <option value="6 Months">6 Months</option>
+                      <option value="12 Months">12 Months</option>
+                    </select>
+                    <div class="invalid-feedback" id="error-stay-duration"></div>
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <button type="submit" class="btn btn-dark-green w-100 py-3">Submit Booking Request</button>
+                </div>
+              </form>
+
+              <!-- Confirmation Message (Hidden by Default) -->
+              <div id="booking-confirmation" class="alert alert-success mt-4 d-none" role="status">
+                <h4 class="alert-heading fw-bold"><i class="bi bi-check-circle-fill me-2"></i>Booking Request Submitted!</h4>
+                <p>Thank you! Our team has received your booking request and will contact you shortly on your provided number.</p>
+                <hr>
+                <div id="confirmation-summary" class="mb-0"></div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Placeholder (JS Load Karega) -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+  <!-- Main JS -->
+  <script src="../js/main.js"></script>
+</body>
+</html>

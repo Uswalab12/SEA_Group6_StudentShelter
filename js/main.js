@@ -105,6 +105,11 @@ function renderFeaturedHostels() {
   const grid = document.getElementById("featuredHostelsGrid");
   if (!grid) return; 
 
+  // Determine base path for GitHub Pages vs Localhost
+  const isLocalhost = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost";
+  const repoName = "/SEA_Group6_StudentShelter"; // Make sure this matches your GitHub repo name exactly
+  const basePath = isLocalhost ? "" : repoName;
+  
   const isInsidePages = window.location.pathname.includes("/pages/");
   const linkPrefix = isInsidePages ? "../" : "";
 
@@ -124,7 +129,7 @@ function renderFeaturedHostels() {
                 <span class="hostel-price">PKR ${hostel.price.toLocaleString()}</span>
                 <span class="small text-secondary d-block">per month</span>
               </div>
-              <a href="${linkPrefix}pages/find-hostel.html?city=${encodeURIComponent(hostel.city)}" class="btn btn-dark-green btn-sm rounded-pill px-3">
+              <a href="${basePath}${linkPrefix}pages/find-hostel.html?city=${encodeURIComponent(hostel.city)}" class="btn btn-dark-green btn-sm rounded-pill px-3">
                 View
               </a>
             </div>
@@ -138,12 +143,18 @@ function renderFeaturedHostels() {
 
 // 5. Load Header and Footer
 async function loadLayout() {
+  // 1. Check for Localhost vs GitHub Pages
+  const isLocalhost = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost";
+  const repoName = "/SEA_Group6_StudentShelter"; // Ensure this matches your GitHub repository name
+  const basePath = isLocalhost ? "" : repoName;
+
+  // 2. Check if we are inside the 'pages' folder
   const isInsidePages = window.location.pathname.includes("/pages/");
   const prefix = isInsidePages ? "../" : "";
 
   try {
     // Load Header
-    const headerResponse = await fetch(prefix + "includes/header.html");
+    const headerResponse = await fetch(basePath + prefix + "includes/header.html");
     if (headerResponse.ok) {
       const headerData = await headerResponse.text();
       const headerPlaceholder = document.getElementById("header-placeholder");
@@ -151,21 +162,24 @@ async function loadLayout() {
       if (headerPlaceholder) {
         headerPlaceholder.innerHTML = headerData;
         
-        // Fix paths for pages folder
-        if (isInsidePages) {
-          headerPlaceholder.querySelectorAll("img").forEach(img => {
-            img.src = prefix + img.getAttribute("src");
-            if (img.hasAttribute("onerror")) {
-              img.setAttribute("onerror", `this.onerror=null;this.src='${prefix}images/Student Shelter Green Logo.png';`);
-            }
-          });
-          headerPlaceholder.querySelectorAll("a").forEach(link => {
-            const href = link.getAttribute("href");
-            if (href && !href.startsWith("#") && !href.startsWith("http")) {
-              link.setAttribute("href", prefix + href);
-            }
-          });
-        }
+        // Fix paths for pages folder AND GitHub Pages base path
+        headerPlaceholder.querySelectorAll("img").forEach(img => {
+          const src = img.getAttribute("src");
+          // Skip absolute URLs
+          if (src && !src.startsWith("http") && !src.startsWith("data:")) {
+             img.src = basePath + prefix + src;
+          }
+          if (img.hasAttribute("onerror")) {
+            img.setAttribute("onerror", `this.onerror=null;this.src='${basePath}${prefix}images/Student Shelter Green Logo.png';`);
+          }
+        });
+
+        headerPlaceholder.querySelectorAll("a").forEach(link => {
+          const href = link.getAttribute("href");
+          if (href && !href.startsWith("#") && !href.startsWith("http")) {
+            link.setAttribute("href", basePath + prefix + href);
+          }
+        });
 
         // Set Active Link
         const currentPath = window.location.pathname;
@@ -195,7 +209,7 @@ async function loadLayout() {
     }
 
     // Load Footer
-    const footerResponse = await fetch(prefix + "includes/footer.html");
+    const footerResponse = await fetch(basePath + prefix + "includes/footer.html");
     if (footerResponse.ok) {
       const footerData = await footerResponse.text();
       const footerPlaceholder = document.getElementById("footer-placeholder");
@@ -203,21 +217,23 @@ async function loadLayout() {
       if (footerPlaceholder) {
         footerPlaceholder.innerHTML = footerData;
         
-        // Fix paths for pages folder
-        if (isInsidePages) {
-          footerPlaceholder.querySelectorAll("img").forEach(img => {
-            img.src = prefix + img.getAttribute("src");
-            if (img.hasAttribute("onerror")) {
-              img.setAttribute("onerror", `this.onerror=null;this.src='${prefix}images/Student Shelter Green Logo.png';`);
-            }
-          });
-          footerPlaceholder.querySelectorAll("a").forEach(link => {
-            const href = link.getAttribute("href");
-            if (href && !href.startsWith("#") && !href.startsWith("http")) {
-              link.setAttribute("href", prefix + href);
-            }
-          });
-        }
+        // Fix paths for pages folder AND GitHub Pages base path
+        footerPlaceholder.querySelectorAll("img").forEach(img => {
+          const src = img.getAttribute("src");
+          if (src && !src.startsWith("http") && !src.startsWith("data:")) {
+             img.src = basePath + prefix + src;
+          }
+          if (img.hasAttribute("onerror")) {
+            img.setAttribute("onerror", `this.onerror=null;this.src='${basePath}${prefix}images/Student Shelter Green Logo.png';`);
+          }
+        });
+
+        footerPlaceholder.querySelectorAll("a").forEach(link => {
+          const href = link.getAttribute("href");
+          if (href && !href.startsWith("#") && !href.startsWith("http")) {
+            link.setAttribute("href", basePath + prefix + href);
+          }
+        });
       }
     }
   } catch (error) {
